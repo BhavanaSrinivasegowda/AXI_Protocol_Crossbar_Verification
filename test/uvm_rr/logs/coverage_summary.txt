@@ -1,0 +1,832 @@
+QuestaSim-64 vcover 2024.2 Coverage Utility 2024.05 May 20 2024
+Start time: 21:12:57 on Aug 16,2026
+vcover report -details -all logs/merged.ucdb 
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /rr_tb_top/u_dut
+=== Design Unit: work.axicb_round_robin_core
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        29        24         5    82.75%
+
+================================Branch Details================================
+
+Branch Coverage for instance /rr_tb_top/u_dut
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File ../../rtl/axicb_round_robin_core.sv
+------------------------------------IF Branch------------------------------------
+    185                                      862     Count coming in to IF
+    185             1                        658     
+    193             1                        204     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    186                                      658     Count coming in to IF
+    186             1                        102     
+    187             1                        167     
+    188             1                        189     
+    189             1                        200     
+    190             1                    ***0***     
+Branch totals: 4 hits of 5 branches = 80.00%
+
+------------------------------------IF Branch------------------------------------
+    194                                      204     Count coming in to IF
+    194             1                        107     
+    195             1                         52     
+    196             1                         19     
+    197             1                    ***0***     
+    198             1                         26     
+Branch totals: 4 hits of 5 branches = 80.00%
+
+------------------------------------IF Branch------------------------------------
+    205                                      495     Count coming in to IF
+    205             1                          3     
+    207             1                    ***0***     
+    209             1                        492     
+Branch totals: 2 hits of 3 branches = 66.66%
+
+------------------------------------IF Branch------------------------------------
+    210                                      492     Count coming in to IF
+    210             1                        420     
+                                              72     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    211                                      420     Count coming in to IF
+    211             1                        107     
+    212             1                        108     
+    213             1                        104     
+    214             1                        101     
+                                         ***0***     All False Count
+Branch totals: 4 hits of 5 branches = 80.00%
+
+------------------------------------IF Branch------------------------------------
+    2758                                     499     Count coming in to IF
+    2758            1                          3     
+    2760            1                    ***0***     
+    2762            1                        496     
+Branch totals: 2 hits of 3 branches = 66.66%
+
+------------------------------------IF Branch------------------------------------
+    2763                                     496     Count coming in to IF
+    2763            1                        443     
+                                              53     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    2770                                    1043     Count coming in to IF
+    2770            1                        954     
+    2772            1                         89     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       2         2         0   100.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /rr_tb_top/u_dut --
+
+  File ../../rtl/axicb_round_robin_core.sv
+----------------Focused Condition View-------------------
+Line       210 Item    1  (en && |grant)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+  Input Term   Covered  Reason for no coverage   Hint
+ -----------  --------  -----------------------  --------------
+          en         Y
+      |grant         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  en_0                  -                             
+  Row   2:          1  en_1                  |grant                        
+  Row   3:          1  |grant_0              en                            
+  Row   4:          1  |grant_1              en                            
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      26        22         4    84.61%
+
+================================Statement Details================================
+
+Statement Coverage for instance /rr_tb_top/u_dut --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File ../../rtl/axicb_round_robin_core.sv
+    177             1                        862     
+    180             1                        862     
+    186             1                        102     
+    187             1                        167     
+    188             1                        189     
+    189             1                        200     
+    190             1                    ***0***     
+    194             1                        107     
+    195             1                         52     
+    196             1                         19     
+    197             1                    ***0***     
+    198             1                         26     
+    203             1                        495     
+    206             1                          3     
+    208             1                    ***0***     
+    211             1                        107     
+    212             1                        108     
+    213             1                        104     
+    214             1                        101     
+    2757            1                        499     
+    2759            1                          3     
+    2761            1                    ***0***     
+    2764            1                        443     
+    2769            1                       1043     
+    2771            1                        954     
+    2773            1                         89     
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         56        52         4    92.85%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /rr_tb_top/u_dut --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                              aclk           1           1      100.00 
+                                           aresetn           0           1       50.00 
+                                                en           1           1      100.00 
+                                        grant[0-3]           1           1      100.00 
+                                      grant_c[0-3]           1           1      100.00 
+                                      grant_r[0-3]           1           1      100.00 
+                                         mask[0-2]           1           1      100.00 
+                                           mask[3]           0           1       50.00 
+                                       masked[0-3]           1           1      100.00 
+                                          req[0-3]           1           1      100.00 
+                                              srst           0           0        0.00 
+
+Total Node Count     =         28 
+Toggled Node Count   =         25 
+Untoggled Node Count =          3 
+
+Toggle Coverage      =      92.85% (52 of 56 bins)
+
+=================================================================================
+=== Instance: /rr_pkg
+=== Design Unit: work.rr_pkg
+=================================================================================
+
+Assertion Coverage:
+    Assertions                       1         1         0   100.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/rr_pkg/rr_random_seq/body/#ublk#127428375#96/immed__99
+                     seq/rr_sequences.sv(99)            0          1
+
+Covergroup Coverage:
+    Covergroups                      1        na        na    60.39%
+        Coverpoints/Crosses          5        na        na        na
+            Covergroup Bins        292        77       215    26.36%
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /rr_pkg/rr_coverage/cg                           60.39%        100          -    Uncovered            
+    covered/total bins:                                    77        292          -                      
+    missing/total bins:                                   215        292          -                      
+    % Hit:                                             26.36%        100          -                      
+    Coverpoint cp_req                                 100.00%        100          -    Covered              
+        covered/total bins:                                16         16          -                      
+        missing/total bins:                                 0         16          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin auto[0]                                        26          1          -    Covered              
+        bin auto[1]                                        33          1          -    Covered              
+        bin auto[2]                                        33          1          -    Covered              
+        bin auto[3]                                        36          1          -    Covered              
+        bin auto[4]                                        25          1          -    Covered              
+        bin auto[5]                                        34          1          -    Covered              
+        bin auto[6]                                        27          1          -    Covered              
+        bin auto[7]                                        37          1          -    Covered              
+        bin auto[8]                                        38          1          -    Covered              
+        bin auto[9]                                        25          1          -    Covered              
+        bin auto[10]                                       31          1          -    Covered              
+        bin auto[11]                                       22          1          -    Covered              
+        bin auto[12]                                       23          1          -    Covered              
+        bin auto[13]                                       30          1          -    Covered              
+        bin auto[14]                                       42          1          -    Covered              
+        bin auto[15]                                       38          1          -    Covered              
+    Coverpoint cp_grant                                31.25%        100          -    Uncovered            
+        covered/total bins:                                 5         16          -                      
+        missing/total bins:                                11         16          -                      
+        % Hit:                                         31.25%        100          -                      
+        bin auto[0]                                        25          1          -    Covered              
+        bin auto[1]                                       119          1          -    Covered              
+        bin auto[2]                                       128          1          -    Covered              
+        bin auto[3]                                         0          1          -    ZERO                 
+        bin auto[4]                                       115          1          -    Covered              
+        bin auto[5]                                         0          1          -    ZERO                 
+        bin auto[6]                                         0          1          -    ZERO                 
+        bin auto[7]                                         0          1          -    ZERO                 
+        bin auto[8]                                       113          1          -    Covered              
+        bin auto[9]                                         0          1          -    ZERO                 
+        bin auto[10]                                        0          1          -    ZERO                 
+        bin auto[11]                                        0          1          -    ZERO                 
+        bin auto[12]                                        0          1          -    ZERO                 
+        bin auto[13]                                        0          1          -    ZERO                 
+        bin auto[14]                                        0          1          -    ZERO                 
+        bin auto[15]                                        0          1          -    ZERO                 
+    Coverpoint cp_en                                  100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin auto[0]                                        54          1          -    Covered              
+        bin auto[1]                                       446          1          -    Covered              
+    Coverpoint cp_srst                                 50.00%        100          -    Uncovered            
+        covered/total bins:                                 1          2          -                      
+        missing/total bins:                                 1          2          -                      
+        % Hit:                                         50.00%        100          -                      
+        bin auto[0]                                       500          1          -    Covered              
+        bin auto[1]                                         0          1          -    ZERO                 
+    Cross cx_req_grant                                 20.70%        100          -    Uncovered            
+        covered/total bins:                                53        256          -                      
+        missing/total bins:                               203        256          -                      
+        % Hit:                                         20.70%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <auto[15],auto[8]>                         10          1          -    Covered              
+            bin <auto[14],auto[8]>                         10          1          -    Covered              
+            bin <auto[13],auto[8]>                          4          1          -    Covered              
+            bin <auto[12],auto[8]>                          4          1          -    Covered              
+            bin <auto[11],auto[8]>                         15          1          -    Covered              
+            bin <auto[10],auto[8]>                         18          1          -    Covered              
+            bin <auto[9],auto[8]>                          17          1          -    Covered              
+            bin <auto[8],auto[8]>                          30          1          -    Covered              
+            bin <auto[7],auto[8]>                           1          1          -    Covered              
+            bin <auto[4],auto[8]>                           1          1          -    Covered              
+            bin <auto[3],auto[8]>                           1          1          -    Covered              
+            bin <auto[2],auto[8]>                           1          1          -    Covered              
+            bin <auto[1],auto[8]>                           1          1          -    Covered              
+            bin <auto[15],auto[4]>                          7          1          -    Covered              
+            bin <auto[14],auto[4]>                          9          1          -    Covered              
+            bin <auto[13],auto[4]>                         21          1          -    Covered              
+            bin <auto[12],auto[4]>                         18          1          -    Covered              
+            bin <auto[9],auto[4]>                           1          1          -    Covered              
+            bin <auto[8],auto[4]>                           2          1          -    Covered              
+            bin <auto[7],auto[4]>                           9          1          -    Covered              
+            bin <auto[6],auto[4]>                           6          1          -    Covered              
+            bin <auto[5],auto[4]>                          18          1          -    Covered              
+            bin <auto[4],auto[4]>                          21          1          -    Covered              
+            bin <auto[3],auto[4]>                           1          1          -    Covered              
+            bin <auto[2],auto[4]>                           1          1          -    Covered              
+            bin <auto[1],auto[4]>                           1          1          -    Covered              
+            bin <auto[15],auto[2]>                         12          1          -    Covered              
+            bin <auto[14],auto[2]>                         23          1          -    Covered              
+            bin <auto[12],auto[2]>                          1          1          -    Covered              
+            bin <auto[11],auto[2]>                          3          1          -    Covered              
+            bin <auto[10],auto[2]>                         13          1          -    Covered              
+            bin <auto[9],auto[2]>                           1          1          -    Covered              
+            bin <auto[8],auto[2]>                           2          1          -    Covered              
+            bin <auto[7],auto[2]>                           9          1          -    Covered              
+            bin <auto[6],auto[2]>                          21          1          -    Covered              
+            bin <auto[5],auto[2]>                           1          1          -    Covered              
+            bin <auto[4],auto[2]>                           1          1          -    Covered              
+            bin <auto[3],auto[2]>                           6          1          -    Covered              
+            bin <auto[2],auto[2]>                          31          1          -    Covered              
+            bin <auto[1],auto[2]>                           2          1          -    Covered              
+            bin <auto[0],auto[2]>                           2          1          -    Covered              
+            bin <auto[15],auto[1]>                          9          1          -    Covered              
+            bin <auto[13],auto[1]>                          5          1          -    Covered              
+            bin <auto[11],auto[1]>                          4          1          -    Covered              
+            bin <auto[9],auto[1]>                           6          1          -    Covered              
+            bin <auto[8],auto[1]>                           4          1          -    Covered              
+            bin <auto[7],auto[1]>                          18          1          -    Covered              
+            bin <auto[5],auto[1]>                          15          1          -    Covered              
+            bin <auto[4],auto[1]>                           2          1          -    Covered              
+            bin <auto[3],auto[1]>                          27          1          -    Covered              
+            bin <auto[1],auto[1]>                          29          1          -    Covered              
+            bin <auto[3],auto[0]>                           1          1          -    Covered              
+            bin <auto[0],auto[0]>                          24          1          -    Covered              
+            bin <*,auto[15]>                                0          1         16    ZERO                 
+            bin <*,auto[14]>                                0          1         16    ZERO                 
+            bin <*,auto[13]>                                0          1         16    ZERO                 
+            bin <*,auto[12]>                                0          1         16    ZERO                 
+            bin <*,auto[11]>                                0          1         16    ZERO                 
+            bin <*,auto[10]>                                0          1         16    ZERO                 
+            bin <*,auto[9]>                                 0          1         16    ZERO                 
+            bin <*,auto[7]>                                 0          1         16    ZERO                 
+            bin <*,auto[6]>                                 0          1         16    ZERO                 
+            bin <*,auto[5]>                                 0          1         16    ZERO                 
+            bin <*,auto[3]>                                 0          1         16    ZERO                 
+            bin <auto[6],auto[8]>                           0          1          1    ZERO                 
+            bin <auto[5],auto[8]>                           0          1          1    ZERO                 
+            bin <auto[0],auto[8]>                           0          1          1    ZERO                 
+            bin <auto[11],auto[4]>                          0          1          1    ZERO                 
+            bin <auto[10],auto[4]>                          0          1          1    ZERO                 
+            bin <auto[0],auto[4]>                           0          1          1    ZERO                 
+            bin <auto[13],auto[2]>                          0          1          1    ZERO                 
+            bin <auto[14],auto[1]>                          0          1          1    ZERO                 
+            bin <auto[12],auto[1]>                          0          1          1    ZERO                 
+            bin <auto[10],auto[1]>                          0          1          1    ZERO                 
+            bin <auto[6],auto[1]>                           0          1          1    ZERO                 
+            bin <auto[2],auto[1]>                           0          1          1    ZERO                 
+            bin <auto[0],auto[1]>                           0          1          1    ZERO                 
+            bin <auto[15],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[14],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[13],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[12],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[11],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[10],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[9],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[8],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[7],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[6],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[5],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[4],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[2],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[1],auto[0]>                           0          1          1    ZERO                 
+ Covergroup instance \/rr_pkg::rr_coverage::cg         60.39%        100          -    Uncovered            
+    covered/total bins:                                    77        292          -                      
+    missing/total bins:                                   215        292          -                      
+    % Hit:                                             26.36%        100          -                      
+    Coverpoint cp_req                                 100.00%        100          -    Covered              
+        covered/total bins:                                16         16          -                      
+        missing/total bins:                                 0         16          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin auto[0]                                        26          1          -    Covered              
+        bin auto[1]                                        33          1          -    Covered              
+        bin auto[2]                                        33          1          -    Covered              
+        bin auto[3]                                        36          1          -    Covered              
+        bin auto[4]                                        25          1          -    Covered              
+        bin auto[5]                                        34          1          -    Covered              
+        bin auto[6]                                        27          1          -    Covered              
+        bin auto[7]                                        37          1          -    Covered              
+        bin auto[8]                                        38          1          -    Covered              
+        bin auto[9]                                        25          1          -    Covered              
+        bin auto[10]                                       31          1          -    Covered              
+        bin auto[11]                                       22          1          -    Covered              
+        bin auto[12]                                       23          1          -    Covered              
+        bin auto[13]                                       30          1          -    Covered              
+        bin auto[14]                                       42          1          -    Covered              
+        bin auto[15]                                       38          1          -    Covered              
+    Coverpoint cp_grant                                31.25%        100          -    Uncovered            
+        covered/total bins:                                 5         16          -                      
+        missing/total bins:                                11         16          -                      
+        % Hit:                                         31.25%        100          -                      
+        bin auto[0]                                        25          1          -    Covered              
+        bin auto[1]                                       119          1          -    Covered              
+        bin auto[2]                                       128          1          -    Covered              
+        bin auto[3]                                         0          1          -    ZERO                 
+        bin auto[4]                                       115          1          -    Covered              
+        bin auto[5]                                         0          1          -    ZERO                 
+        bin auto[6]                                         0          1          -    ZERO                 
+        bin auto[7]                                         0          1          -    ZERO                 
+        bin auto[8]                                       113          1          -    Covered              
+        bin auto[9]                                         0          1          -    ZERO                 
+        bin auto[10]                                        0          1          -    ZERO                 
+        bin auto[11]                                        0          1          -    ZERO                 
+        bin auto[12]                                        0          1          -    ZERO                 
+        bin auto[13]                                        0          1          -    ZERO                 
+        bin auto[14]                                        0          1          -    ZERO                 
+        bin auto[15]                                        0          1          -    ZERO                 
+    Coverpoint cp_en                                  100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin auto[0]                                        54          1          -    Covered              
+        bin auto[1]                                       446          1          -    Covered              
+    Coverpoint cp_srst                                 50.00%        100          -    Uncovered            
+        covered/total bins:                                 1          2          -                      
+        missing/total bins:                                 1          2          -                      
+        % Hit:                                         50.00%        100          -                      
+        bin auto[0]                                       500          1          -    Covered              
+        bin auto[1]                                         0          1          -    ZERO                 
+    Cross cx_req_grant                                 20.70%        100          -    Uncovered            
+        covered/total bins:                                53        256          -                      
+        missing/total bins:                               203        256          -                      
+        % Hit:                                         20.70%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <auto[15],auto[8]>                         10          1          -    Covered              
+            bin <auto[14],auto[8]>                         10          1          -    Covered              
+            bin <auto[13],auto[8]>                          4          1          -    Covered              
+            bin <auto[12],auto[8]>                          4          1          -    Covered              
+            bin <auto[11],auto[8]>                         15          1          -    Covered              
+            bin <auto[10],auto[8]>                         18          1          -    Covered              
+            bin <auto[9],auto[8]>                          17          1          -    Covered              
+            bin <auto[8],auto[8]>                          30          1          -    Covered              
+            bin <auto[7],auto[8]>                           1          1          -    Covered              
+            bin <auto[4],auto[8]>                           1          1          -    Covered              
+            bin <auto[3],auto[8]>                           1          1          -    Covered              
+            bin <auto[2],auto[8]>                           1          1          -    Covered              
+            bin <auto[1],auto[8]>                           1          1          -    Covered              
+            bin <auto[15],auto[4]>                          7          1          -    Covered              
+            bin <auto[14],auto[4]>                          9          1          -    Covered              
+            bin <auto[13],auto[4]>                         21          1          -    Covered              
+            bin <auto[12],auto[4]>                         18          1          -    Covered              
+            bin <auto[9],auto[4]>                           1          1          -    Covered              
+            bin <auto[8],auto[4]>                           2          1          -    Covered              
+            bin <auto[7],auto[4]>                           9          1          -    Covered              
+            bin <auto[6],auto[4]>                           6          1          -    Covered              
+            bin <auto[5],auto[4]>                          18          1          -    Covered              
+            bin <auto[4],auto[4]>                          21          1          -    Covered              
+            bin <auto[3],auto[4]>                           1          1          -    Covered              
+            bin <auto[2],auto[4]>                           1          1          -    Covered              
+            bin <auto[1],auto[4]>                           1          1          -    Covered              
+            bin <auto[15],auto[2]>                         12          1          -    Covered              
+            bin <auto[14],auto[2]>                         23          1          -    Covered              
+            bin <auto[12],auto[2]>                          1          1          -    Covered              
+            bin <auto[11],auto[2]>                          3          1          -    Covered              
+            bin <auto[10],auto[2]>                         13          1          -    Covered              
+            bin <auto[9],auto[2]>                           1          1          -    Covered              
+            bin <auto[8],auto[2]>                           2          1          -    Covered              
+            bin <auto[7],auto[2]>                           9          1          -    Covered              
+            bin <auto[6],auto[2]>                          21          1          -    Covered              
+            bin <auto[5],auto[2]>                           1          1          -    Covered              
+            bin <auto[4],auto[2]>                           1          1          -    Covered              
+            bin <auto[3],auto[2]>                           6          1          -    Covered              
+            bin <auto[2],auto[2]>                          31          1          -    Covered              
+            bin <auto[1],auto[2]>                           2          1          -    Covered              
+            bin <auto[0],auto[2]>                           2          1          -    Covered              
+            bin <auto[15],auto[1]>                          9          1          -    Covered              
+            bin <auto[13],auto[1]>                          5          1          -    Covered              
+            bin <auto[11],auto[1]>                          4          1          -    Covered              
+            bin <auto[9],auto[1]>                           6          1          -    Covered              
+            bin <auto[8],auto[1]>                           4          1          -    Covered              
+            bin <auto[7],auto[1]>                          18          1          -    Covered              
+            bin <auto[5],auto[1]>                          15          1          -    Covered              
+            bin <auto[4],auto[1]>                           2          1          -    Covered              
+            bin <auto[3],auto[1]>                          27          1          -    Covered              
+            bin <auto[1],auto[1]>                          29          1          -    Covered              
+            bin <auto[3],auto[0]>                           1          1          -    Covered              
+            bin <auto[0],auto[0]>                          24          1          -    Covered              
+            bin <*,auto[15]>                                0          1         16    ZERO                 
+            bin <*,auto[14]>                                0          1         16    ZERO                 
+            bin <*,auto[13]>                                0          1         16    ZERO                 
+            bin <*,auto[12]>                                0          1         16    ZERO                 
+            bin <*,auto[11]>                                0          1         16    ZERO                 
+            bin <*,auto[10]>                                0          1         16    ZERO                 
+            bin <*,auto[9]>                                 0          1         16    ZERO                 
+            bin <*,auto[7]>                                 0          1         16    ZERO                 
+            bin <*,auto[6]>                                 0          1         16    ZERO                 
+            bin <*,auto[5]>                                 0          1         16    ZERO                 
+            bin <*,auto[3]>                                 0          1         16    ZERO                 
+            bin <auto[6],auto[8]>                           0          1          1    ZERO                 
+            bin <auto[5],auto[8]>                           0          1          1    ZERO                 
+            bin <auto[0],auto[8]>                           0          1          1    ZERO                 
+            bin <auto[11],auto[4]>                          0          1          1    ZERO                 
+            bin <auto[10],auto[4]>                          0          1          1    ZERO                 
+            bin <auto[0],auto[4]>                           0          1          1    ZERO                 
+            bin <auto[13],auto[2]>                          0          1          1    ZERO                 
+            bin <auto[14],auto[1]>                          0          1          1    ZERO                 
+            bin <auto[12],auto[1]>                          0          1          1    ZERO                 
+            bin <auto[10],auto[1]>                          0          1          1    ZERO                 
+            bin <auto[6],auto[1]>                           0          1          1    ZERO                 
+            bin <auto[2],auto[1]>                           0          1          1    ZERO                 
+            bin <auto[0],auto[1]>                           0          1          1    ZERO                 
+            bin <auto[15],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[14],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[13],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[12],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[11],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[10],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[9],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[8],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[7],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[6],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[5],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[4],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[2],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[1],auto[0]>                           0          1          1    ZERO                 
+
+COVERGROUP COVERAGE:
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /rr_pkg/rr_coverage/cg                           60.39%        100          -    Uncovered            
+    covered/total bins:                                    77        292          -                      
+    missing/total bins:                                   215        292          -                      
+    % Hit:                                             26.36%        100          -                      
+    Coverpoint cp_req                                 100.00%        100          -    Covered              
+        covered/total bins:                                16         16          -                      
+        missing/total bins:                                 0         16          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin auto[0]                                        26          1          -    Covered              
+        bin auto[1]                                        33          1          -    Covered              
+        bin auto[2]                                        33          1          -    Covered              
+        bin auto[3]                                        36          1          -    Covered              
+        bin auto[4]                                        25          1          -    Covered              
+        bin auto[5]                                        34          1          -    Covered              
+        bin auto[6]                                        27          1          -    Covered              
+        bin auto[7]                                        37          1          -    Covered              
+        bin auto[8]                                        38          1          -    Covered              
+        bin auto[9]                                        25          1          -    Covered              
+        bin auto[10]                                       31          1          -    Covered              
+        bin auto[11]                                       22          1          -    Covered              
+        bin auto[12]                                       23          1          -    Covered              
+        bin auto[13]                                       30          1          -    Covered              
+        bin auto[14]                                       42          1          -    Covered              
+        bin auto[15]                                       38          1          -    Covered              
+    Coverpoint cp_grant                                31.25%        100          -    Uncovered            
+        covered/total bins:                                 5         16          -                      
+        missing/total bins:                                11         16          -                      
+        % Hit:                                         31.25%        100          -                      
+        bin auto[0]                                        25          1          -    Covered              
+        bin auto[1]                                       119          1          -    Covered              
+        bin auto[2]                                       128          1          -    Covered              
+        bin auto[3]                                         0          1          -    ZERO                 
+        bin auto[4]                                       115          1          -    Covered              
+        bin auto[5]                                         0          1          -    ZERO                 
+        bin auto[6]                                         0          1          -    ZERO                 
+        bin auto[7]                                         0          1          -    ZERO                 
+        bin auto[8]                                       113          1          -    Covered              
+        bin auto[9]                                         0          1          -    ZERO                 
+        bin auto[10]                                        0          1          -    ZERO                 
+        bin auto[11]                                        0          1          -    ZERO                 
+        bin auto[12]                                        0          1          -    ZERO                 
+        bin auto[13]                                        0          1          -    ZERO                 
+        bin auto[14]                                        0          1          -    ZERO                 
+        bin auto[15]                                        0          1          -    ZERO                 
+    Coverpoint cp_en                                  100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin auto[0]                                        54          1          -    Covered              
+        bin auto[1]                                       446          1          -    Covered              
+    Coverpoint cp_srst                                 50.00%        100          -    Uncovered            
+        covered/total bins:                                 1          2          -                      
+        missing/total bins:                                 1          2          -                      
+        % Hit:                                         50.00%        100          -                      
+        bin auto[0]                                       500          1          -    Covered              
+        bin auto[1]                                         0          1          -    ZERO                 
+    Cross cx_req_grant                                 20.70%        100          -    Uncovered            
+        covered/total bins:                                53        256          -                      
+        missing/total bins:                               203        256          -                      
+        % Hit:                                         20.70%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <auto[15],auto[8]>                         10          1          -    Covered              
+            bin <auto[14],auto[8]>                         10          1          -    Covered              
+            bin <auto[13],auto[8]>                          4          1          -    Covered              
+            bin <auto[12],auto[8]>                          4          1          -    Covered              
+            bin <auto[11],auto[8]>                         15          1          -    Covered              
+            bin <auto[10],auto[8]>                         18          1          -    Covered              
+            bin <auto[9],auto[8]>                          17          1          -    Covered              
+            bin <auto[8],auto[8]>                          30          1          -    Covered              
+            bin <auto[7],auto[8]>                           1          1          -    Covered              
+            bin <auto[4],auto[8]>                           1          1          -    Covered              
+            bin <auto[3],auto[8]>                           1          1          -    Covered              
+            bin <auto[2],auto[8]>                           1          1          -    Covered              
+            bin <auto[1],auto[8]>                           1          1          -    Covered              
+            bin <auto[15],auto[4]>                          7          1          -    Covered              
+            bin <auto[14],auto[4]>                          9          1          -    Covered              
+            bin <auto[13],auto[4]>                         21          1          -    Covered              
+            bin <auto[12],auto[4]>                         18          1          -    Covered              
+            bin <auto[9],auto[4]>                           1          1          -    Covered              
+            bin <auto[8],auto[4]>                           2          1          -    Covered              
+            bin <auto[7],auto[4]>                           9          1          -    Covered              
+            bin <auto[6],auto[4]>                           6          1          -    Covered              
+            bin <auto[5],auto[4]>                          18          1          -    Covered              
+            bin <auto[4],auto[4]>                          21          1          -    Covered              
+            bin <auto[3],auto[4]>                           1          1          -    Covered              
+            bin <auto[2],auto[4]>                           1          1          -    Covered              
+            bin <auto[1],auto[4]>                           1          1          -    Covered              
+            bin <auto[15],auto[2]>                         12          1          -    Covered              
+            bin <auto[14],auto[2]>                         23          1          -    Covered              
+            bin <auto[12],auto[2]>                          1          1          -    Covered              
+            bin <auto[11],auto[2]>                          3          1          -    Covered              
+            bin <auto[10],auto[2]>                         13          1          -    Covered              
+            bin <auto[9],auto[2]>                           1          1          -    Covered              
+            bin <auto[8],auto[2]>                           2          1          -    Covered              
+            bin <auto[7],auto[2]>                           9          1          -    Covered              
+            bin <auto[6],auto[2]>                          21          1          -    Covered              
+            bin <auto[5],auto[2]>                           1          1          -    Covered              
+            bin <auto[4],auto[2]>                           1          1          -    Covered              
+            bin <auto[3],auto[2]>                           6          1          -    Covered              
+            bin <auto[2],auto[2]>                          31          1          -    Covered              
+            bin <auto[1],auto[2]>                           2          1          -    Covered              
+            bin <auto[0],auto[2]>                           2          1          -    Covered              
+            bin <auto[15],auto[1]>                          9          1          -    Covered              
+            bin <auto[13],auto[1]>                          5          1          -    Covered              
+            bin <auto[11],auto[1]>                          4          1          -    Covered              
+            bin <auto[9],auto[1]>                           6          1          -    Covered              
+            bin <auto[8],auto[1]>                           4          1          -    Covered              
+            bin <auto[7],auto[1]>                          18          1          -    Covered              
+            bin <auto[5],auto[1]>                          15          1          -    Covered              
+            bin <auto[4],auto[1]>                           2          1          -    Covered              
+            bin <auto[3],auto[1]>                          27          1          -    Covered              
+            bin <auto[1],auto[1]>                          29          1          -    Covered              
+            bin <auto[3],auto[0]>                           1          1          -    Covered              
+            bin <auto[0],auto[0]>                          24          1          -    Covered              
+            bin <*,auto[15]>                                0          1         16    ZERO                 
+            bin <*,auto[14]>                                0          1         16    ZERO                 
+            bin <*,auto[13]>                                0          1         16    ZERO                 
+            bin <*,auto[12]>                                0          1         16    ZERO                 
+            bin <*,auto[11]>                                0          1         16    ZERO                 
+            bin <*,auto[10]>                                0          1         16    ZERO                 
+            bin <*,auto[9]>                                 0          1         16    ZERO                 
+            bin <*,auto[7]>                                 0          1         16    ZERO                 
+            bin <*,auto[6]>                                 0          1         16    ZERO                 
+            bin <*,auto[5]>                                 0          1         16    ZERO                 
+            bin <*,auto[3]>                                 0          1         16    ZERO                 
+            bin <auto[6],auto[8]>                           0          1          1    ZERO                 
+            bin <auto[5],auto[8]>                           0          1          1    ZERO                 
+            bin <auto[0],auto[8]>                           0          1          1    ZERO                 
+            bin <auto[11],auto[4]>                          0          1          1    ZERO                 
+            bin <auto[10],auto[4]>                          0          1          1    ZERO                 
+            bin <auto[0],auto[4]>                           0          1          1    ZERO                 
+            bin <auto[13],auto[2]>                          0          1          1    ZERO                 
+            bin <auto[14],auto[1]>                          0          1          1    ZERO                 
+            bin <auto[12],auto[1]>                          0          1          1    ZERO                 
+            bin <auto[10],auto[1]>                          0          1          1    ZERO                 
+            bin <auto[6],auto[1]>                           0          1          1    ZERO                 
+            bin <auto[2],auto[1]>                           0          1          1    ZERO                 
+            bin <auto[0],auto[1]>                           0          1          1    ZERO                 
+            bin <auto[15],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[14],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[13],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[12],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[11],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[10],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[9],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[8],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[7],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[6],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[5],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[4],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[2],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[1],auto[0]>                           0          1          1    ZERO                 
+ Covergroup instance \/rr_pkg::rr_coverage::cg         60.39%        100          -    Uncovered            
+    covered/total bins:                                    77        292          -                      
+    missing/total bins:                                   215        292          -                      
+    % Hit:                                             26.36%        100          -                      
+    Coverpoint cp_req                                 100.00%        100          -    Covered              
+        covered/total bins:                                16         16          -                      
+        missing/total bins:                                 0         16          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin auto[0]                                        26          1          -    Covered              
+        bin auto[1]                                        33          1          -    Covered              
+        bin auto[2]                                        33          1          -    Covered              
+        bin auto[3]                                        36          1          -    Covered              
+        bin auto[4]                                        25          1          -    Covered              
+        bin auto[5]                                        34          1          -    Covered              
+        bin auto[6]                                        27          1          -    Covered              
+        bin auto[7]                                        37          1          -    Covered              
+        bin auto[8]                                        38          1          -    Covered              
+        bin auto[9]                                        25          1          -    Covered              
+        bin auto[10]                                       31          1          -    Covered              
+        bin auto[11]                                       22          1          -    Covered              
+        bin auto[12]                                       23          1          -    Covered              
+        bin auto[13]                                       30          1          -    Covered              
+        bin auto[14]                                       42          1          -    Covered              
+        bin auto[15]                                       38          1          -    Covered              
+    Coverpoint cp_grant                                31.25%        100          -    Uncovered            
+        covered/total bins:                                 5         16          -                      
+        missing/total bins:                                11         16          -                      
+        % Hit:                                         31.25%        100          -                      
+        bin auto[0]                                        25          1          -    Covered              
+        bin auto[1]                                       119          1          -    Covered              
+        bin auto[2]                                       128          1          -    Covered              
+        bin auto[3]                                         0          1          -    ZERO                 
+        bin auto[4]                                       115          1          -    Covered              
+        bin auto[5]                                         0          1          -    ZERO                 
+        bin auto[6]                                         0          1          -    ZERO                 
+        bin auto[7]                                         0          1          -    ZERO                 
+        bin auto[8]                                       113          1          -    Covered              
+        bin auto[9]                                         0          1          -    ZERO                 
+        bin auto[10]                                        0          1          -    ZERO                 
+        bin auto[11]                                        0          1          -    ZERO                 
+        bin auto[12]                                        0          1          -    ZERO                 
+        bin auto[13]                                        0          1          -    ZERO                 
+        bin auto[14]                                        0          1          -    ZERO                 
+        bin auto[15]                                        0          1          -    ZERO                 
+    Coverpoint cp_en                                  100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin auto[0]                                        54          1          -    Covered              
+        bin auto[1]                                       446          1          -    Covered              
+    Coverpoint cp_srst                                 50.00%        100          -    Uncovered            
+        covered/total bins:                                 1          2          -                      
+        missing/total bins:                                 1          2          -                      
+        % Hit:                                         50.00%        100          -                      
+        bin auto[0]                                       500          1          -    Covered              
+        bin auto[1]                                         0          1          -    ZERO                 
+    Cross cx_req_grant                                 20.70%        100          -    Uncovered            
+        covered/total bins:                                53        256          -                      
+        missing/total bins:                               203        256          -                      
+        % Hit:                                         20.70%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <auto[15],auto[8]>                         10          1          -    Covered              
+            bin <auto[14],auto[8]>                         10          1          -    Covered              
+            bin <auto[13],auto[8]>                          4          1          -    Covered              
+            bin <auto[12],auto[8]>                          4          1          -    Covered              
+            bin <auto[11],auto[8]>                         15          1          -    Covered              
+            bin <auto[10],auto[8]>                         18          1          -    Covered              
+            bin <auto[9],auto[8]>                          17          1          -    Covered              
+            bin <auto[8],auto[8]>                          30          1          -    Covered              
+            bin <auto[7],auto[8]>                           1          1          -    Covered              
+            bin <auto[4],auto[8]>                           1          1          -    Covered              
+            bin <auto[3],auto[8]>                           1          1          -    Covered              
+            bin <auto[2],auto[8]>                           1          1          -    Covered              
+            bin <auto[1],auto[8]>                           1          1          -    Covered              
+            bin <auto[15],auto[4]>                          7          1          -    Covered              
+            bin <auto[14],auto[4]>                          9          1          -    Covered              
+            bin <auto[13],auto[4]>                         21          1          -    Covered              
+            bin <auto[12],auto[4]>                         18          1          -    Covered              
+            bin <auto[9],auto[4]>                           1          1          -    Covered              
+            bin <auto[8],auto[4]>                           2          1          -    Covered              
+            bin <auto[7],auto[4]>                           9          1          -    Covered              
+            bin <auto[6],auto[4]>                           6          1          -    Covered              
+            bin <auto[5],auto[4]>                          18          1          -    Covered              
+            bin <auto[4],auto[4]>                          21          1          -    Covered              
+            bin <auto[3],auto[4]>                           1          1          -    Covered              
+            bin <auto[2],auto[4]>                           1          1          -    Covered              
+            bin <auto[1],auto[4]>                           1          1          -    Covered              
+            bin <auto[15],auto[2]>                         12          1          -    Covered              
+            bin <auto[14],auto[2]>                         23          1          -    Covered              
+            bin <auto[12],auto[2]>                          1          1          -    Covered              
+            bin <auto[11],auto[2]>                          3          1          -    Covered              
+            bin <auto[10],auto[2]>                         13          1          -    Covered              
+            bin <auto[9],auto[2]>                           1          1          -    Covered              
+            bin <auto[8],auto[2]>                           2          1          -    Covered              
+            bin <auto[7],auto[2]>                           9          1          -    Covered              
+            bin <auto[6],auto[2]>                          21          1          -    Covered              
+            bin <auto[5],auto[2]>                           1          1          -    Covered              
+            bin <auto[4],auto[2]>                           1          1          -    Covered              
+            bin <auto[3],auto[2]>                           6          1          -    Covered              
+            bin <auto[2],auto[2]>                          31          1          -    Covered              
+            bin <auto[1],auto[2]>                           2          1          -    Covered              
+            bin <auto[0],auto[2]>                           2          1          -    Covered              
+            bin <auto[15],auto[1]>                          9          1          -    Covered              
+            bin <auto[13],auto[1]>                          5          1          -    Covered              
+            bin <auto[11],auto[1]>                          4          1          -    Covered              
+            bin <auto[9],auto[1]>                           6          1          -    Covered              
+            bin <auto[8],auto[1]>                           4          1          -    Covered              
+            bin <auto[7],auto[1]>                          18          1          -    Covered              
+            bin <auto[5],auto[1]>                          15          1          -    Covered              
+            bin <auto[4],auto[1]>                           2          1          -    Covered              
+            bin <auto[3],auto[1]>                          27          1          -    Covered              
+            bin <auto[1],auto[1]>                          29          1          -    Covered              
+            bin <auto[3],auto[0]>                           1          1          -    Covered              
+            bin <auto[0],auto[0]>                          24          1          -    Covered              
+            bin <*,auto[15]>                                0          1         16    ZERO                 
+            bin <*,auto[14]>                                0          1         16    ZERO                 
+            bin <*,auto[13]>                                0          1         16    ZERO                 
+            bin <*,auto[12]>                                0          1         16    ZERO                 
+            bin <*,auto[11]>                                0          1         16    ZERO                 
+            bin <*,auto[10]>                                0          1         16    ZERO                 
+            bin <*,auto[9]>                                 0          1         16    ZERO                 
+            bin <*,auto[7]>                                 0          1         16    ZERO                 
+            bin <*,auto[6]>                                 0          1         16    ZERO                 
+            bin <*,auto[5]>                                 0          1         16    ZERO                 
+            bin <*,auto[3]>                                 0          1         16    ZERO                 
+            bin <auto[6],auto[8]>                           0          1          1    ZERO                 
+            bin <auto[5],auto[8]>                           0          1          1    ZERO                 
+            bin <auto[0],auto[8]>                           0          1          1    ZERO                 
+            bin <auto[11],auto[4]>                          0          1          1    ZERO                 
+            bin <auto[10],auto[4]>                          0          1          1    ZERO                 
+            bin <auto[0],auto[4]>                           0          1          1    ZERO                 
+            bin <auto[13],auto[2]>                          0          1          1    ZERO                 
+            bin <auto[14],auto[1]>                          0          1          1    ZERO                 
+            bin <auto[12],auto[1]>                          0          1          1    ZERO                 
+            bin <auto[10],auto[1]>                          0          1          1    ZERO                 
+            bin <auto[6],auto[1]>                           0          1          1    ZERO                 
+            bin <auto[2],auto[1]>                           0          1          1    ZERO                 
+            bin <auto[0],auto[1]>                           0          1          1    ZERO                 
+            bin <auto[15],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[14],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[13],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[12],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[11],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[10],auto[0]>                          0          1          1    ZERO                 
+            bin <auto[9],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[8],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[7],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[6],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[5],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[4],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[2],auto[0]>                           0          1          1    ZERO                 
+            bin <auto[1],auto[0]>                           0          1          1    ZERO                 
+
+TOTAL COVERGROUP COVERAGE: 60.39%  COVERGROUP TYPES: 1
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/rr_pkg/rr_random_seq/body/#ublk#127428375#96/immed__99
+                     seq/rr_sequences.sv(99)            0          1
+
+Total Coverage By Instance (filtered view): 86.77%
+
+End time: 21:12:57 on Aug 16,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

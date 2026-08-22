@@ -1,0 +1,154 @@
+
+==============================================================
+    Jasper Verification Results
+==============================================================
+    2022.12p002 64 bits for Linux64 3.10.0-1160.21.1.el7.x86_64
+    Host Name: mo.ece.pdx.edu
+    User Name: bhavanas
+    Printed on: Wednesday, May27, 2026 08:25:50 PM PDT
+    Working Directory: /u/bhavanas/AX_Crossbar_Verification/FPV/tcl
+
+
+==============================================================
+RESULTS
+==============================================================
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+       Name                                                                                                          |    Result    |  Engine  |  Bound  |  Time    
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---[ <embedded> ]-----------------------------------------------------------------------------------------------------------------------------------------------------
+[1]   rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[0].asm_req_stable_until_grant:precondition1                          covered         N             1    0.030 s      
+[2]   rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[1].asm_req_stable_until_grant:precondition1                          covered         N             1    0.030 s      
+[3]   rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[2].asm_req_stable_until_grant:precondition1                          covered         N             1    0.002 s      
+[4]   rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[3].asm_req_stable_until_grant:precondition1                          covered         N             1    0.002 s      
+[5]   rr_fpv_top.u_dut.u_rr_props.ast_grant_zero_after_areset                                                             proven          N      Infinite    0.001 s      
+[6]   rr_fpv_top.u_dut.u_rr_props.ast_grant_zero_after_areset:precondition1                                               covered         PRE           1    0.000 s      
+[7]   rr_fpv_top.u_dut.u_rr_props.ast_grant_zero_after_srst                                                               proven          Hp     Infinite    0.108 s      
+[8]   rr_fpv_top.u_dut.u_rr_props.ast_grant_zero_after_srst:precondition1                                                 covered         Hp            1    0.059 s      
+[9]   rr_fpv_top.u_dut.u_rr_props.ast_grant_zero_after_srst:precondition2                                                 covered         Hp            2    0.109 s      
+[10]  rr_fpv_top.u_dut.u_rr_props.ast_mask_zero_after_areset                                                              proven          Hp     Infinite    0.043 s      
+[11]  rr_fpv_top.u_dut.u_rr_props.ast_mask_zero_after_areset:precondition1                                                covered         Hp            1    0.065 s      
+[12]  rr_fpv_top.u_dut.u_rr_props.ast_mask_zero_after_srst                                                                proven          Hp     Infinite    0.044 s      
+[13]  rr_fpv_top.u_dut.u_rr_props.ast_mask_zero_after_srst:precondition1                                                  covered         Hp            2    0.114 s      
+[14]  rr_fpv_top.u_dut.u_rr_props.ast_grant_onehot_or_zero                                                                proven          Hp     Infinite    0.044 s      
+[15]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[0].ast_grant_implies_req                                      proven          Hp     Infinite    0.045 s      
+[16]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[0].ast_grant_implies_req:precondition1                        covered         Hp            1    0.070 s      
+[17]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[1].ast_grant_implies_req                                      proven          Hp     Infinite    0.045 s      
+[18]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[1].ast_grant_implies_req:precondition1                        covered         Hp            1    0.077 s      
+[19]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[2].ast_grant_implies_req                                      proven          Hp     Infinite    0.046 s      
+[20]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[2].ast_grant_implies_req:precondition1                        covered         Hp            1    0.082 s      
+[21]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[3].ast_grant_implies_req                                      proven          Hp     Infinite    0.046 s      
+[22]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[3].ast_grant_implies_req:precondition1                        covered         Hp            1    0.089 s      
+[23]  rr_fpv_top.u_dut.u_rr_props.ast_mask_value_after_grant_bit0                                                         proven          Hp     Infinite    0.047 s      
+[24]  rr_fpv_top.u_dut.u_rr_props.ast_mask_value_after_grant_bit0:precondition1                                           covered         Hp            1    0.070 s      
+[25]  rr_fpv_top.u_dut.u_rr_props.ast_mask_value_after_grant_bit0:precondition2                                           covered         Hp            2    0.118 s      
+[26]  rr_fpv_top.u_dut.u_rr_props.ast_mask_value_after_grant_msb                                                          proven          Hp     Infinite    0.047 s      
+[27]  rr_fpv_top.u_dut.u_rr_props.ast_mask_value_after_grant_msb:precondition1                                            covered         Hp            1    0.094 s      
+[28]  rr_fpv_top.u_dut.u_rr_props.ast_mask_value_after_grant_msb:precondition2                                            covered         Hp            2    0.122 s      
+[29]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[0].ast_mask_clears_granted_and_lower                         proven          Hp     Infinite    0.048 s      
+[30]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[0].ast_mask_clears_granted_and_lower:precondition1           covered         Hp            1    0.070 s      
+[31]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[0].ast_mask_clears_granted_and_lower:precondition2           covered         Hp            2    0.118 s      
+[32]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[1].ast_mask_clears_granted_and_lower                         proven          Hp     Infinite    0.048 s      
+[33]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[1].ast_mask_clears_granted_and_lower:precondition1           covered         Hp            1    0.077 s      
+[34]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[1].ast_mask_clears_granted_and_lower:precondition2           covered         Hp            2    0.126 s      
+[35]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[2].ast_mask_clears_granted_and_lower                         proven          Hp     Infinite    0.049 s      
+[36]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[2].ast_mask_clears_granted_and_lower:precondition1           covered         Hp            1    0.082 s      
+[37]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[2].ast_mask_clears_granted_and_lower:precondition2           covered         Hp            2    0.131 s      
+[38]  rr_fpv_top.u_dut.u_rr_props.ast_mask_monotone_shift                                                                 proven          Hp     Infinite    0.108 s      
+[39]  rr_fpv_top.u_dut.u_rr_props.ast_mask_monotone_shift:precondition1                                                   covered         Hp            2    0.118 s      
+[40]  rr_fpv_top.u_dut.u_rr_props.ast_grant_skips_masked_lower                                                            proven          Hp     Infinite    0.049 s      
+[41]  rr_fpv_top.u_dut.u_rr_props.ast_grant_skips_masked_lower:precondition1                                              covered         Hp            1    0.070 s      
+[42]  rr_fpv_top.u_dut.u_rr_props.ast_masked_path_taken_first                                                             proven          Hp     Infinite    0.050 s      
+[43]  rr_fpv_top.u_dut.u_rr_props.ast_masked_path_taken_first:precondition1                                               covered         Hp            1    0.070 s      
+[44]  rr_fpv_top.u_dut.u_rr_props.ast_grant_wraps_to_zero_after_msb                                                       proven          Hp     Infinite    0.050 s      
+[45]  rr_fpv_top.u_dut.u_rr_props.ast_grant_wraps_to_zero_after_msb:precondition1                                         covered         Hp            1    0.094 s      
+[46]  rr_fpv_top.u_dut.u_rr_props.ast_grant_wraps_to_zero_after_msb:precondition2                                         covered         Hp            2    0.122 s      
+[47]  rr_fpv_top.u_dut.u_rr_props.ast_consecutive_grants_different                                                        proven          Hp     Infinite    0.051 s      
+[48]  rr_fpv_top.u_dut.u_rr_props.ast_consecutive_grants_different:precondition1                                          covered         Hp            2    0.118 s      
+[49]  rr_fpv_top.u_dut.u_rr_props.ast_prio1_beats_prio0                                                                   proven          Hp     Infinite    0.051 s      
+[50]  rr_fpv_top.u_dut.u_rr_props.ast_prio1_beats_prio0:precondition1                                                     covered         Hp            1    0.077 s      
+[51]  rr_fpv_top.u_dut.u_rr_props.ast_prio2_beats_prio0                                                                   proven          Hp     Infinite    0.052 s      
+[52]  rr_fpv_top.u_dut.u_rr_props.ast_prio2_beats_prio0:precondition1                                                     covered         Hp            1    0.082 s      
+[53]  rr_fpv_top.u_dut.u_rr_props.ast_prio2_beats_prio1                                                                   proven          Hp     Infinite    0.052 s      
+[54]  rr_fpv_top.u_dut.u_rr_props.ast_prio2_beats_prio1:precondition1                                                     covered         Hp            1    0.082 s      
+[55]  rr_fpv_top.u_dut.u_rr_props.ast_prio3_beats_prio0                                                                   proven          Hp     Infinite    0.053 s      
+[56]  rr_fpv_top.u_dut.u_rr_props.ast_prio3_beats_prio0:precondition1                                                     covered         Hp            1    0.089 s      
+[57]  rr_fpv_top.u_dut.u_rr_props.ast_prio3_beats_prio1                                                                   proven          Hp     Infinite    0.053 s      
+[58]  rr_fpv_top.u_dut.u_rr_props.ast_prio3_beats_prio1:precondition1                                                     covered         Hp            1    0.089 s      
+[59]  rr_fpv_top.u_dut.u_rr_props.ast_prio3_beats_prio2                                                                   proven          Hp     Infinite    0.053 s      
+[60]  rr_fpv_top.u_dut.u_rr_props.ast_prio3_beats_prio2:precondition1                                                     covered         Hp            1    0.089 s      
+[61]  rr_fpv_top.u_dut.u_rr_props.ast_p_active_highest_wins                                                               proven          PRE    Infinite    0.000 s      
+[62]  rr_fpv_top.u_dut.u_rr_props.ast_p_active_highest_wins:precondition1                                                 covered         N             1    0.002 s      
+[63]  rr_fpv_top.u_dut.u_rr_props.ast_grant_from_active_layer_p2                                                          proven          Hp     Infinite    0.054 s      
+[64]  rr_fpv_top.u_dut.u_rr_props.ast_grant_from_active_layer_p2:precondition1                                            covered         Hp            1    0.082 s      
+[65]  rr_fpv_top.u_dut.u_rr_props.ast_grant_from_active_layer_p3                                                          proven          Hp     Infinite    0.054 s      
+[66]  rr_fpv_top.u_dut.u_rr_props.ast_grant_from_active_layer_p3:precondition1                                            covered         N             1    0.002 s      
+[67]  rr_fpv_top.u_dut.u_rr_props.ast_lower_layer_blocked                                                                 proven          Hp     Infinite    0.055 s      
+[68]  rr_fpv_top.u_dut.u_rr_props.ast_lower_layer_blocked:precondition1                                                   covered         Hp            1    0.089 s      
+[69]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[0].ast_req_eventually_granted                                          proven          N      Infinite    0.000 s      
+[70]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[0].ast_req_eventually_granted:precondition1                            covered         Hp            1    0.070 s      
+[71]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[1].ast_req_eventually_granted                                          proven          N      Infinite    0.013 s      
+[72]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[1].ast_req_eventually_granted:precondition1                            covered         Hp            1    0.077 s      
+[73]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[2].ast_req_eventually_granted                                          proven          Hp     Infinite    0.179 s      
+[74]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[2].ast_req_eventually_granted:precondition1                            covered         Hp            1    0.082 s      
+[75]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[3].ast_req_eventually_granted                                          proven          Hp     Infinite    0.179 s      
+[76]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[3].ast_req_eventually_granted:precondition1                            covered         Hp            1    0.089 s      
+[77]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[0].ast_no_starvation_same_priority                           proven          Hp     Infinite    0.179 s      
+[78]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[0].ast_no_starvation_same_priority:precondition1             covered         Hp            1    0.070 s      
+[79]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[1].ast_no_starvation_same_priority                           proven          Hp     Infinite    0.179 s      
+[80]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[1].ast_no_starvation_same_priority:precondition1             covered         Hp            1    0.077 s      
+[81]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[2].ast_no_starvation_same_priority                           proven          Hp     Infinite    0.179 s      
+[82]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[2].ast_no_starvation_same_priority:precondition1             covered         Hp            1    0.082 s      
+[83]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[3].ast_no_starvation_same_priority                           proven          Hp     Infinite    0.180 s      
+[84]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[3].ast_no_starvation_same_priority:precondition1             covered         Hp            1    0.089 s      
+[85]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[0].ast_single_req_always_granted                                     proven          Hp     Infinite    0.055 s      
+[86]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[0].ast_single_req_always_granted:precondition1                       covered         Hp            1    0.070 s      
+[87]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[1].ast_single_req_always_granted                                     proven          Hp     Infinite    0.056 s      
+[88]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[1].ast_single_req_always_granted:precondition1                       covered         Hp            1    0.099 s      
+[89]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[2].ast_single_req_always_granted                                     proven          Hp     Infinite    0.056 s      
+[90]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[2].ast_single_req_always_granted:precondition1                       covered         Hp            1    0.103 s      
+[91]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[3].ast_single_req_always_granted                                     proven          Hp     Infinite    0.056 s      
+[92]  rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[3].ast_single_req_always_granted:precondition1                       covered         Hp            1    0.094 s      
+[93]  rr_fpv_top.u_dut.u_rr_props.ast_grant_valid_after_mask_reboot                                                       proven          Hp     Infinite    0.057 s      
+[94]  rr_fpv_top.u_dut.u_rr_props.ast_grant_valid_after_mask_reboot:precondition1                                         covered         Hp            2    0.135 s      
+[95]  rr_fpv_top.u_dut.u_rr_props.ast_lonely_req_below_mask                                                               proven          Hp     Infinite    0.057 s      
+[96]  rr_fpv_top.u_dut.u_rr_props.ast_lonely_req_below_mask:precondition1                                                 covered         Hp            1    0.070 s      
+[97]  rr_fpv_top.u_dut.u_rr_props.ast_srst_overrides_en                                                                   proven          Hp     Infinite    0.108 s      
+[98]  rr_fpv_top.u_dut.u_rr_props.ast_srst_overrides_en:precondition1                                                     covered         PRE           1    0.000 s      
+[99]  rr_fpv_top.u_dut.u_rr_props.ast_srst_overrides_en:precondition2                                                     covered         Hp            2    0.109 s      
+[100] rr_fpv_top.u_dut.u_rr_props.ast_no_grant_when_en_deasserted_after_reset                                             proven          Hp     Infinite    0.156 s      
+[101] rr_fpv_top.u_dut.u_rr_props.ast_no_grant_when_en_deasserted_after_reset:precondition1                               covered         N             1    0.030 s      
+[102] rr_fpv_top.u_dut.u_rr_props.ast_no_grant_when_en_deasserted_after_reset:precondition2                               covered         Hp            2    0.140 s      
+[103] rr_fpv_top.u_dut.u_rr_props.GEN_COV_EACH_GRANT[0].cov_grant_fires                                                   covered         Hp            1    0.070 s      
+[104] rr_fpv_top.u_dut.u_rr_props.GEN_COV_EACH_GRANT[1].cov_grant_fires                                                   covered         Hp            1    0.077 s      
+[105] rr_fpv_top.u_dut.u_rr_props.GEN_COV_EACH_GRANT[2].cov_grant_fires                                                   covered         Hp            1    0.082 s      
+[106] rr_fpv_top.u_dut.u_rr_props.GEN_COV_EACH_GRANT[3].cov_grant_fires                                                   covered         Hp            1    0.089 s      
+[107] rr_fpv_top.u_dut.u_rr_props.cov_all_req_all_granted                                                                 covered         Hp            4    0.167 s      
+[108] rr_fpv_top.u_dut.u_rr_props.cov_mask_wraps_to_allones                                                               covered         Hp            1    0.089 s      
+[109] rr_fpv_top.u_dut.u_rr_props.cov_masked_path_taken                                                                   covered         Hp            2    0.144 s      
+[110] rr_fpv_top.u_dut.u_rr_props.cov_unmasked_fallback_taken                                                             covered         Hp            2    0.148 s      
+[111] rr_fpv_top.u_dut.u_rr_props.cov_back_to_back_different                                                              covered         Hp            2    0.126 s      
+[112] rr_fpv_top.u_dut.u_rr_props.cov_priority_preemption                                                                 covered         Hp            2    0.152 s      
+[113] rr_fpv_top.u_dut.u_rr_props.GEN_COV_SINGLE[0].cov_single_requester                                                  covered         Hp            1    0.070 s      
+[114] rr_fpv_top.u_dut.u_rr_props.GEN_COV_SINGLE[1].cov_single_requester                                                  covered         Hp            1    0.099 s      
+[115] rr_fpv_top.u_dut.u_rr_props.GEN_COV_SINGLE[2].cov_single_requester                                                  covered         Hp            1    0.103 s      
+[116] rr_fpv_top.u_dut.u_rr_props.GEN_COV_SINGLE[3].cov_single_requester                                                  covered         Hp            1    0.094 s      
+[117] rr_fpv_top.u_dut.u_rr_props.cov_srst_clears_grant                                                                   covered         Hp            3    0.158 s      
+[118] rr_fpv_top.u_dut.u_rr_props.cov_en_gates_grant                                                                      covered         Ht            5    0.001 s      
+[119] rr_fpv_top.u_dut.u_rr_props.cov_full_rotation                                                                       covered         Hp            4    0.171 s      
+[120] rr_fpv_top.u_dut.u_rr_props.cov_p_active_switches                                                                   covered         Hp            3    0.162 s      
+
+==============================================================
+ASSUMPTIONS
+==============================================================
+
+-------------------------------------------------------------------------------
+       Name    |  Expression  |  Location     |  Status      |  Dependencies                  
+-------------------------------------------------------------------------------
+[1]   <embedded>::rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[0].asm_req_stable_until_grant  u_dut.u_rr_props.GEN_ASM_REQ_STABLE[0].asm_req_stable_until_grant  N/A approved
+[2]   <embedded>::rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[1].asm_req_stable_until_grant  u_dut.u_rr_props.GEN_ASM_REQ_STABLE[1].asm_req_stable_until_grant  N/A approved
+[3]   <embedded>::rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[2].asm_req_stable_until_grant  u_dut.u_rr_props.GEN_ASM_REQ_STABLE[2].asm_req_stable_until_grant  N/A approved
+[4]   <embedded>::rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[3].asm_req_stable_until_grant  u_dut.u_rr_props.GEN_ASM_REQ_STABLE[3].asm_req_stable_until_grant  N/A approved
+[5]   <embedded>::rr_fpv_top.u_dut.u_rr_props.asm_en_not_x  u_dut.u_rr_props.asm_en_not_x  N/A approved
+[6]   <embedded>::rr_fpv_top.u_dut.u_rr_props.asm_req_not_x  u_dut.u_rr_props.asm_req_not_x  N/A approved

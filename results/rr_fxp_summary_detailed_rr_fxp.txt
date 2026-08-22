@@ -1,0 +1,1499 @@
+
+==============================================================
+    Jasper Verification Results
+==============================================================
+    2022.12p002 64 bits for Linux64 3.10.0-1160.21.1.el7.x86_64
+    Host Name: mo.ece.pdx.edu
+    User Name: bhavanas
+    Printed on: Tuesday, May26, 2026 05:13:17 PM PDT
+    Working Directory: /u/bhavanas/AX_Crossbar_Verification/FPV/tcl
+
+
+==============================================================
+DETAILED RESULTS
+==============================================================
+
+---[ <embedded> ]--------------------------------------------------------------
+[1]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[0].asm_req_stable_until_grant
+    Expression : u_dut.u_rr_props.GEN_ASM_REQ_STABLE[0].asm_req_stable_until_grant
+    Type       : assume
+    Location   : ../props/rr_props.sv, 185
+
+    Status     : approved
+[2]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[0].asm_req_stable_until_grant:precondition1
+    Expression : u_dut.u_rr_props.GEN_ASM_REQ_STABLE[0].asm_req_stable_until_grant_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 185
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.004 s
+    Engine     : N
+
+
+[3]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[1].asm_req_stable_until_grant
+    Expression : u_dut.u_rr_props.GEN_ASM_REQ_STABLE[1].asm_req_stable_until_grant
+    Type       : assume
+    Location   : ../props/rr_props.sv, 185
+
+    Status     : approved
+[4]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[1].asm_req_stable_until_grant:precondition1
+    Expression : u_dut.u_rr_props.GEN_ASM_REQ_STABLE[1].asm_req_stable_until_grant_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 185
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.004 s
+    Engine     : N
+
+
+[5]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[2].asm_req_stable_until_grant
+    Expression : u_dut.u_rr_props.GEN_ASM_REQ_STABLE[2].asm_req_stable_until_grant
+    Type       : assume
+    Location   : ../props/rr_props.sv, 185
+
+    Status     : approved
+[6]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[2].asm_req_stable_until_grant:precondition1
+    Expression : u_dut.u_rr_props.GEN_ASM_REQ_STABLE[2].asm_req_stable_until_grant_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 185
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.002 s
+    Engine     : N
+
+
+[7]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[3].asm_req_stable_until_grant
+    Expression : u_dut.u_rr_props.GEN_ASM_REQ_STABLE[3].asm_req_stable_until_grant
+    Type       : assume
+    Location   : ../props/rr_props.sv, 185
+
+    Status     : approved
+[8]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_ASM_REQ_STABLE[3].asm_req_stable_until_grant:precondition1
+    Expression : u_dut.u_rr_props.GEN_ASM_REQ_STABLE[3].asm_req_stable_until_grant_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 185
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.002 s
+    Engine     : N
+
+
+[9]
+    Name       : rr_fpv_top.u_dut.u_rr_props.asm_en_not_x
+    Expression : u_dut.u_rr_props.asm_en_not_x
+    Type       : assume
+    Location   : ../props/rr_props.sv, 193
+
+    Status     : approved
+[10]
+    Name       : rr_fpv_top.u_dut.u_rr_props.asm_req_not_x
+    Expression : u_dut.u_rr_props.asm_req_not_x
+    Type       : assume
+    Location   : ../props/rr_props.sv, 199
+
+    Status     : approved
+[11]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_zero_after_areset
+    Expression : u_dut.u_rr_props.ast_grant_zero_after_areset
+    Type       : assert
+    Location   : ../props/rr_props.sv, 220
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.002 s
+    Engine     : N
+
+
+[12]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_zero_after_areset:precondition1
+    Expression : u_dut.u_rr_props.ast_grant_zero_after_areset_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 220
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.000 s
+    Engine     : PRE
+
+
+[13]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_zero_after_srst
+    Expression : u_dut.u_rr_props.ast_grant_zero_after_srst
+    Type       : assert
+    Location   : ../props/rr_props.sv, 229
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.042 s
+    Engine     : N
+
+
+[14]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_zero_after_srst:precondition1
+    Expression : u_dut.u_rr_props.ast_grant_zero_after_srst_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 229
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.049 s
+    Engine     : Hp
+
+
+[15]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_zero_after_srst:precondition2
+    Expression : u_dut.u_rr_props.ast_grant_zero_after_srst_precondition2
+    Type       : cover
+    Location   : ../props/rr_props.sv, 229
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.001 s
+    Engine     : N
+
+
+[16]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_mask_zero_after_areset
+    Expression : u_dut.u_rr_props.ast_mask_zero_after_areset
+    Type       : assert
+    Location   : ../props/rr_props.sv, 239
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.033 s
+    Engine     : Hp
+
+
+[17]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_mask_zero_after_areset:precondition1
+    Expression : u_dut.u_rr_props.ast_mask_zero_after_areset_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 239
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.057 s
+    Engine     : Hp
+
+
+[18]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_mask_zero_after_srst
+    Expression : u_dut.u_rr_props.ast_mask_zero_after_srst
+    Type       : assert
+    Location   : ../props/rr_props.sv, 248
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.033 s
+    Engine     : Hp
+
+
+[19]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_mask_zero_after_srst:precondition1
+    Expression : u_dut.u_rr_props.ast_mask_zero_after_srst_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 248
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.129 s
+    Engine     : Hp
+
+
+[20]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_onehot_or_zero
+    Expression : u_dut.u_rr_props.ast_grant_onehot_or_zero
+    Type       : assert
+    Location   : ../props/rr_props.sv, 259
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.033 s
+    Engine     : Hp
+
+
+[21]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[0].ast_grant_implies_req
+    Expression : u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[0].ast_grant_implies_req
+    Type       : assert
+    Location   : ../props/rr_props.sv, 269
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.034 s
+    Engine     : Hp
+
+
+[22]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[0].ast_grant_implies_req:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[0].ast_grant_implies_req_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 269
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.065 s
+    Engine     : Hp
+
+
+[23]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[1].ast_grant_implies_req
+    Expression : u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[1].ast_grant_implies_req
+    Type       : assert
+    Location   : ../props/rr_props.sv, 269
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.034 s
+    Engine     : Hp
+
+
+[24]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[1].ast_grant_implies_req:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[1].ast_grant_implies_req_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 269
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.076 s
+    Engine     : Hp
+
+
+[25]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[2].ast_grant_implies_req
+    Expression : u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[2].ast_grant_implies_req
+    Type       : assert
+    Location   : ../props/rr_props.sv, 269
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.035 s
+    Engine     : Hp
+
+
+[26]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[2].ast_grant_implies_req:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[2].ast_grant_implies_req_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 269
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.086 s
+    Engine     : Hp
+
+
+[27]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[3].ast_grant_implies_req
+    Expression : u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[3].ast_grant_implies_req
+    Type       : assert
+    Location   : ../props/rr_props.sv, 269
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.035 s
+    Engine     : Hp
+
+
+[28]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[3].ast_grant_implies_req:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_GRANT_IMPLIES_REQ[3].ast_grant_implies_req_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 269
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.094 s
+    Engine     : Hp
+
+
+[29]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_mask_value_after_grant_bit0
+    Expression : u_dut.u_rr_props.ast_mask_value_after_grant_bit0
+    Type       : assert
+    Location   : ../props/rr_props.sv, 288
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.036 s
+    Engine     : Hp
+
+
+[30]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_mask_value_after_grant_bit0:precondition1
+    Expression : u_dut.u_rr_props.ast_mask_value_after_grant_bit0_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 288
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.065 s
+    Engine     : Hp
+
+
+[31]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_mask_value_after_grant_bit0:precondition2
+    Expression : u_dut.u_rr_props.ast_mask_value_after_grant_bit0_precondition2
+    Type       : cover
+    Location   : ../props/rr_props.sv, 288
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.135 s
+    Engine     : Hp
+
+
+[32]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_mask_value_after_grant_msb
+    Expression : u_dut.u_rr_props.ast_mask_value_after_grant_msb
+    Type       : assert
+    Location   : ../props/rr_props.sv, 297
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.036 s
+    Engine     : Hp
+
+
+[33]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_mask_value_after_grant_msb:precondition1
+    Expression : u_dut.u_rr_props.ast_mask_value_after_grant_msb_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 297
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.103 s
+    Engine     : Hp
+
+
+[34]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_mask_value_after_grant_msb:precondition2
+    Expression : u_dut.u_rr_props.ast_mask_value_after_grant_msb_precondition2
+    Type       : cover
+    Location   : ../props/rr_props.sv, 297
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.144 s
+    Engine     : Hp
+
+
+[35]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[0].ast_mask_clears_granted_and_lower
+    Expression : u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[0].ast_mask_clears_granted_and_lower
+    Type       : assert
+    Location   : ../props/rr_props.sv, 309
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.037 s
+    Engine     : Hp
+
+
+[36]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[0].ast_mask_clears_granted_and_lower:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[0].ast_mask_clears_granted_and_lower_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 309
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.065 s
+    Engine     : Hp
+
+
+[37]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[0].ast_mask_clears_granted_and_lower:precondition2
+    Expression : u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[0].ast_mask_clears_granted_and_lower_precondition2
+    Type       : cover
+    Location   : ../props/rr_props.sv, 309
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.135 s
+    Engine     : Hp
+
+
+[38]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[1].ast_mask_clears_granted_and_lower
+    Expression : u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[1].ast_mask_clears_granted_and_lower
+    Type       : assert
+    Location   : ../props/rr_props.sv, 309
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.037 s
+    Engine     : Hp
+
+
+[39]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[1].ast_mask_clears_granted_and_lower:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[1].ast_mask_clears_granted_and_lower_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 309
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.076 s
+    Engine     : Hp
+
+
+[40]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[1].ast_mask_clears_granted_and_lower:precondition2
+    Expression : u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[1].ast_mask_clears_granted_and_lower_precondition2
+    Type       : cover
+    Location   : ../props/rr_props.sv, 309
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.152 s
+    Engine     : Hp
+
+
+[41]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[2].ast_mask_clears_granted_and_lower
+    Expression : u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[2].ast_mask_clears_granted_and_lower
+    Type       : assert
+    Location   : ../props/rr_props.sv, 309
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.038 s
+    Engine     : Hp
+
+
+[42]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[2].ast_mask_clears_granted_and_lower:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[2].ast_mask_clears_granted_and_lower_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 309
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.086 s
+    Engine     : Hp
+
+
+[43]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[2].ast_mask_clears_granted_and_lower:precondition2
+    Expression : u_dut.u_rr_props.GEN_AST_MASK_LOWER_BLOCKED[2].ast_mask_clears_granted_and_lower_precondition2
+    Type       : cover
+    Location   : ../props/rr_props.sv, 309
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.160 s
+    Engine     : Hp
+
+
+[44]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_mask_monotone_shift
+    Expression : u_dut.u_rr_props.ast_mask_monotone_shift
+    Type       : assert
+    Location   : ../props/rr_props.sv, 328
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.128 s
+    Engine     : Hp
+
+
+[45]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_mask_monotone_shift:precondition1
+    Expression : u_dut.u_rr_props.ast_mask_monotone_shift_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 328
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.135 s
+    Engine     : Hp
+
+
+[46]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_skips_masked_lower
+    Expression : u_dut.u_rr_props.ast_grant_skips_masked_lower
+    Type       : assert
+    Location   : ../props/rr_props.sv, 340
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.038 s
+    Engine     : Hp
+
+
+[47]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_skips_masked_lower:precondition1
+    Expression : u_dut.u_rr_props.ast_grant_skips_masked_lower_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 340
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.065 s
+    Engine     : Hp
+
+
+[48]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_masked_path_taken_first
+    Expression : u_dut.u_rr_props.ast_masked_path_taken_first
+    Type       : assert
+    Location   : ../props/rr_props.sv, 346
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.038 s
+    Engine     : Hp
+
+
+[49]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_masked_path_taken_first:precondition1
+    Expression : u_dut.u_rr_props.ast_masked_path_taken_first_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 346
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.065 s
+    Engine     : Hp
+
+
+[50]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_wraps_to_zero_after_msb
+    Expression : u_dut.u_rr_props.ast_grant_wraps_to_zero_after_msb
+    Type       : assert
+    Location   : ../props/rr_props.sv, 353
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.039 s
+    Engine     : Hp
+
+
+[51]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_wraps_to_zero_after_msb:precondition1
+    Expression : u_dut.u_rr_props.ast_grant_wraps_to_zero_after_msb_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 353
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.103 s
+    Engine     : Hp
+
+
+[52]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_wraps_to_zero_after_msb:precondition2
+    Expression : u_dut.u_rr_props.ast_grant_wraps_to_zero_after_msb_precondition2
+    Type       : cover
+    Location   : ../props/rr_props.sv, 353
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.144 s
+    Engine     : Hp
+
+
+[53]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_consecutive_grants_different
+    Expression : u_dut.u_rr_props.ast_consecutive_grants_different
+    Type       : assert
+    Location   : ../props/rr_props.sv, 368
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.039 s
+    Engine     : Hp
+
+
+[54]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_consecutive_grants_different:precondition1
+    Expression : u_dut.u_rr_props.ast_consecutive_grants_different_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 368
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.135 s
+    Engine     : Hp
+
+
+[55]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_prio1_beats_prio0
+    Expression : u_dut.u_rr_props.ast_prio1_beats_prio0
+    Type       : assert
+    Location   : ../props/rr_props.sv, 378
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.040 s
+    Engine     : Hp
+
+
+[56]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_prio1_beats_prio0:precondition1
+    Expression : u_dut.u_rr_props.ast_prio1_beats_prio0_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 378
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.076 s
+    Engine     : Hp
+
+
+[57]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_prio2_beats_prio0
+    Expression : u_dut.u_rr_props.ast_prio2_beats_prio0
+    Type       : assert
+    Location   : ../props/rr_props.sv, 383
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.041 s
+    Engine     : Hp
+
+
+[58]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_prio2_beats_prio0:precondition1
+    Expression : u_dut.u_rr_props.ast_prio2_beats_prio0_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 383
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.086 s
+    Engine     : Hp
+
+
+[59]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_prio2_beats_prio1
+    Expression : u_dut.u_rr_props.ast_prio2_beats_prio1
+    Type       : assert
+    Location   : ../props/rr_props.sv, 388
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.041 s
+    Engine     : Hp
+
+
+[60]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_prio2_beats_prio1:precondition1
+    Expression : u_dut.u_rr_props.ast_prio2_beats_prio1_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 388
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.086 s
+    Engine     : Hp
+
+
+[61]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_prio3_beats_prio0
+    Expression : u_dut.u_rr_props.ast_prio3_beats_prio0
+    Type       : assert
+    Location   : ../props/rr_props.sv, 393
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.042 s
+    Engine     : Hp
+
+
+[62]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_prio3_beats_prio0:precondition1
+    Expression : u_dut.u_rr_props.ast_prio3_beats_prio0_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 393
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.094 s
+    Engine     : Hp
+
+
+[63]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_prio3_beats_prio1
+    Expression : u_dut.u_rr_props.ast_prio3_beats_prio1
+    Type       : assert
+    Location   : ../props/rr_props.sv, 398
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.042 s
+    Engine     : Hp
+
+
+[64]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_prio3_beats_prio1:precondition1
+    Expression : u_dut.u_rr_props.ast_prio3_beats_prio1_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 398
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.094 s
+    Engine     : Hp
+
+
+[65]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_prio3_beats_prio2
+    Expression : u_dut.u_rr_props.ast_prio3_beats_prio2
+    Type       : assert
+    Location   : ../props/rr_props.sv, 403
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.042 s
+    Engine     : Hp
+
+
+[66]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_prio3_beats_prio2:precondition1
+    Expression : u_dut.u_rr_props.ast_prio3_beats_prio2_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 403
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.094 s
+    Engine     : Hp
+
+
+[67]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_p_active_highest_wins
+    Expression : u_dut.u_rr_props.ast_p_active_highest_wins
+    Type       : assert
+    Location   : ../props/rr_props.sv, 411
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.000 s
+    Engine     : PRE
+
+
+[68]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_p_active_highest_wins:precondition1
+    Expression : u_dut.u_rr_props.ast_p_active_highest_wins_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 411
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.002 s
+    Engine     : N
+
+
+[69]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_from_active_layer_p2
+    Expression : u_dut.u_rr_props.ast_grant_from_active_layer_p2
+    Type       : assert
+    Location   : ../props/rr_props.sv, 418
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.043 s
+    Engine     : Hp
+
+
+[70]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_from_active_layer_p2:precondition1
+    Expression : u_dut.u_rr_props.ast_grant_from_active_layer_p2_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 418
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.086 s
+    Engine     : Hp
+
+
+[71]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_from_active_layer_p3
+    Expression : u_dut.u_rr_props.ast_grant_from_active_layer_p3
+    Type       : assert
+    Location   : ../props/rr_props.sv, 423
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.043 s
+    Engine     : Hp
+
+
+[72]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_from_active_layer_p3:precondition1
+    Expression : u_dut.u_rr_props.ast_grant_from_active_layer_p3_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 423
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.002 s
+    Engine     : N
+
+
+[73]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_lower_layer_blocked
+    Expression : u_dut.u_rr_props.ast_lower_layer_blocked
+    Type       : assert
+    Location   : ../props/rr_props.sv, 430
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.044 s
+    Engine     : Hp
+
+
+[74]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_lower_layer_blocked:precondition1
+    Expression : u_dut.u_rr_props.ast_lower_layer_blocked_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 430
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.094 s
+    Engine     : Hp
+
+
+[75]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[0].ast_req_eventually_granted
+    Expression : u_dut.u_rr_props.GEN_AST_LIVENESS[0].ast_req_eventually_granted
+    Type       : assert
+    Location   : ../props/rr_props.sv, 443
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.001 s
+    Engine     : N
+
+
+[76]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[0].ast_req_eventually_granted:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_LIVENESS[0].ast_req_eventually_granted_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 443
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.065 s
+    Engine     : Hp
+
+
+[77]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[1].ast_req_eventually_granted
+    Expression : u_dut.u_rr_props.GEN_AST_LIVENESS[1].ast_req_eventually_granted
+    Type       : assert
+    Location   : ../props/rr_props.sv, 443
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.241 s
+    Engine     : Hp
+
+
+[78]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[1].ast_req_eventually_granted:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_LIVENESS[1].ast_req_eventually_granted_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 443
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.076 s
+    Engine     : Hp
+
+
+[79]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[2].ast_req_eventually_granted
+    Expression : u_dut.u_rr_props.GEN_AST_LIVENESS[2].ast_req_eventually_granted
+    Type       : assert
+    Location   : ../props/rr_props.sv, 443
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.241 s
+    Engine     : Hp
+
+
+[80]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[2].ast_req_eventually_granted:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_LIVENESS[2].ast_req_eventually_granted_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 443
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.086 s
+    Engine     : Hp
+
+
+[81]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[3].ast_req_eventually_granted
+    Expression : u_dut.u_rr_props.GEN_AST_LIVENESS[3].ast_req_eventually_granted
+    Type       : assert
+    Location   : ../props/rr_props.sv, 443
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.241 s
+    Engine     : Hp
+
+
+[82]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_LIVENESS[3].ast_req_eventually_granted:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_LIVENESS[3].ast_req_eventually_granted_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 443
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.094 s
+    Engine     : Hp
+
+
+[83]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[0].ast_no_starvation_same_priority
+    Expression : u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[0].ast_no_starvation_same_priority
+    Type       : assert
+    Location   : ../props/rr_props.sv, 453
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.242 s
+    Engine     : Hp
+
+
+[84]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[0].ast_no_starvation_same_priority:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[0].ast_no_starvation_same_priority_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 453
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.065 s
+    Engine     : Hp
+
+
+[85]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[1].ast_no_starvation_same_priority
+    Expression : u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[1].ast_no_starvation_same_priority
+    Type       : assert
+    Location   : ../props/rr_props.sv, 453
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.242 s
+    Engine     : Hp
+
+
+[86]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[1].ast_no_starvation_same_priority:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[1].ast_no_starvation_same_priority_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 453
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.076 s
+    Engine     : Hp
+
+
+[87]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[2].ast_no_starvation_same_priority
+    Expression : u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[2].ast_no_starvation_same_priority
+    Type       : assert
+    Location   : ../props/rr_props.sv, 453
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.242 s
+    Engine     : Hp
+
+
+[88]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[2].ast_no_starvation_same_priority:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[2].ast_no_starvation_same_priority_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 453
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.086 s
+    Engine     : Hp
+
+
+[89]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[3].ast_no_starvation_same_priority
+    Expression : u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[3].ast_no_starvation_same_priority
+    Type       : assert
+    Location   : ../props/rr_props.sv, 453
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.242 s
+    Engine     : Hp
+
+
+[90]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[3].ast_no_starvation_same_priority:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_SAME_PRIO_FAIRNESS[3].ast_no_starvation_same_priority_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 453
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.094 s
+    Engine     : Hp
+
+
+[91]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[0].ast_single_req_always_granted
+    Expression : u_dut.u_rr_props.GEN_AST_SINGLE_REQ[0].ast_single_req_always_granted
+    Type       : assert
+    Location   : ../props/rr_props.sv, 468
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.044 s
+    Engine     : Hp
+
+
+[92]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[0].ast_single_req_always_granted:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_SINGLE_REQ[0].ast_single_req_always_granted_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 468
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.065 s
+    Engine     : Hp
+
+
+[93]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[1].ast_single_req_always_granted
+    Expression : u_dut.u_rr_props.GEN_AST_SINGLE_REQ[1].ast_single_req_always_granted
+    Type       : assert
+    Location   : ../props/rr_props.sv, 468
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.045 s
+    Engine     : Hp
+
+
+[94]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[1].ast_single_req_always_granted:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_SINGLE_REQ[1].ast_single_req_always_granted_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 468
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.110 s
+    Engine     : Hp
+
+
+[95]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[2].ast_single_req_always_granted
+    Expression : u_dut.u_rr_props.GEN_AST_SINGLE_REQ[2].ast_single_req_always_granted
+    Type       : assert
+    Location   : ../props/rr_props.sv, 468
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.045 s
+    Engine     : Hp
+
+
+[96]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[2].ast_single_req_always_granted:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_SINGLE_REQ[2].ast_single_req_always_granted_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 468
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.117 s
+    Engine     : Hp
+
+
+[97]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[3].ast_single_req_always_granted
+    Expression : u_dut.u_rr_props.GEN_AST_SINGLE_REQ[3].ast_single_req_always_granted
+    Type       : assert
+    Location   : ../props/rr_props.sv, 468
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.046 s
+    Engine     : Hp
+
+
+[98]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_AST_SINGLE_REQ[3].ast_single_req_always_granted:precondition1
+    Expression : u_dut.u_rr_props.GEN_AST_SINGLE_REQ[3].ast_single_req_always_granted_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 468
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.103 s
+    Engine     : Hp
+
+
+[99]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_valid_after_mask_reboot
+    Expression : u_dut.u_rr_props.ast_grant_valid_after_mask_reboot
+    Type       : assert
+    Location   : ../props/rr_props.sv, 479
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.046 s
+    Engine     : Hp
+
+
+[100]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_grant_valid_after_mask_reboot:precondition1
+    Expression : u_dut.u_rr_props.ast_grant_valid_after_mask_reboot_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 479
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.170 s
+    Engine     : Hp
+
+
+[101]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_lonely_req_below_mask
+    Expression : u_dut.u_rr_props.ast_lonely_req_below_mask
+    Type       : assert
+    Location   : ../props/rr_props.sv, 485
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.047 s
+    Engine     : Hp
+
+
+[102]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_lonely_req_below_mask:precondition1
+    Expression : u_dut.u_rr_props.ast_lonely_req_below_mask_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 485
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.065 s
+    Engine     : Hp
+
+
+[103]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_srst_overrides_en
+    Expression : u_dut.u_rr_props.ast_srst_overrides_en
+    Type       : assert
+    Location   : ../props/rr_props.sv, 491
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.128 s
+    Engine     : Hp
+
+
+[104]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_srst_overrides_en:precondition1
+    Expression : u_dut.u_rr_props.ast_srst_overrides_en_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 491
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.000 s
+    Engine     : PRE
+
+
+[105]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_srst_overrides_en:precondition2
+    Expression : u_dut.u_rr_props.ast_srst_overrides_en_precondition2
+    Type       : cover
+    Location   : ../props/rr_props.sv, 491
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.001 s
+    Engine     : N
+
+
+[106]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_no_grant_when_en_deasserted_after_reset
+    Expression : u_dut.u_rr_props.ast_no_grant_when_en_deasserted_after_reset
+    Type       : assert
+    Location   : ../props/rr_props.sv, 497
+
+    Result     : proven
+    Bound      : Infinite
+    Time       : 0.208 s
+    Engine     : Hp
+
+
+[107]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_no_grant_when_en_deasserted_after_reset:precondition1
+    Expression : u_dut.u_rr_props.ast_no_grant_when_en_deasserted_after_reset_precondition1
+    Type       : cover
+    Location   : ../props/rr_props.sv, 497
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.004 s
+    Engine     : N
+
+
+[108]
+    Name       : rr_fpv_top.u_dut.u_rr_props.ast_no_grant_when_en_deasserted_after_reset:precondition2
+    Expression : u_dut.u_rr_props.ast_no_grant_when_en_deasserted_after_reset_precondition2
+    Type       : cover
+    Location   : ../props/rr_props.sv, 497
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.178 s
+    Engine     : Hp
+
+
+[109]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_COV_EACH_GRANT[0].cov_grant_fires
+    Expression : u_dut.u_rr_props.GEN_COV_EACH_GRANT[0].cov_grant_fires
+    Type       : cover
+    Location   : ../props/rr_props.sv, 509
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.065 s
+    Engine     : Hp
+
+
+[110]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_COV_EACH_GRANT[1].cov_grant_fires
+    Expression : u_dut.u_rr_props.GEN_COV_EACH_GRANT[1].cov_grant_fires
+    Type       : cover
+    Location   : ../props/rr_props.sv, 509
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.076 s
+    Engine     : Hp
+
+
+[111]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_COV_EACH_GRANT[2].cov_grant_fires
+    Expression : u_dut.u_rr_props.GEN_COV_EACH_GRANT[2].cov_grant_fires
+    Type       : cover
+    Location   : ../props/rr_props.sv, 509
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.086 s
+    Engine     : Hp
+
+
+[112]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_COV_EACH_GRANT[3].cov_grant_fires
+    Expression : u_dut.u_rr_props.GEN_COV_EACH_GRANT[3].cov_grant_fires
+    Type       : cover
+    Location   : ../props/rr_props.sv, 509
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.094 s
+    Engine     : Hp
+
+
+[113]
+    Name       : rr_fpv_top.u_dut.u_rr_props.cov_all_req_all_granted
+    Expression : u_dut.u_rr_props.cov_all_req_all_granted
+    Type       : cover
+    Location   : ../props/rr_props.sv, 514
+
+    Result     : covered
+    Bound      : 4
+    Time       : 0.227 s
+    Engine     : Hp
+
+
+[114]
+    Name       : rr_fpv_top.u_dut.u_rr_props.cov_mask_wraps_to_allones
+    Expression : u_dut.u_rr_props.cov_mask_wraps_to_allones
+    Type       : cover
+    Location   : ../props/rr_props.sv, 521
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.094 s
+    Engine     : Hp
+
+
+[115]
+    Name       : rr_fpv_top.u_dut.u_rr_props.cov_masked_path_taken
+    Expression : u_dut.u_rr_props.cov_masked_path_taken
+    Type       : cover
+    Location   : ../props/rr_props.sv, 524
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.186 s
+    Engine     : Hp
+
+
+[116]
+    Name       : rr_fpv_top.u_dut.u_rr_props.cov_unmasked_fallback_taken
+    Expression : u_dut.u_rr_props.cov_unmasked_fallback_taken
+    Type       : cover
+    Location   : ../props/rr_props.sv, 529
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.194 s
+    Engine     : Hp
+
+
+[117]
+    Name       : rr_fpv_top.u_dut.u_rr_props.cov_back_to_back_different
+    Expression : u_dut.u_rr_props.cov_back_to_back_different
+    Type       : cover
+    Location   : ../props/rr_props.sv, 534
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.152 s
+    Engine     : Hp
+
+
+[118]
+    Name       : rr_fpv_top.u_dut.u_rr_props.cov_priority_preemption
+    Expression : u_dut.u_rr_props.cov_priority_preemption
+    Type       : cover
+    Location   : ../props/rr_props.sv, 539
+
+    Result     : covered
+    Bound      : 2
+    Time       : 0.202 s
+    Engine     : Hp
+
+
+[119]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_COV_SINGLE[0].cov_single_requester
+    Expression : u_dut.u_rr_props.GEN_COV_SINGLE[0].cov_single_requester
+    Type       : cover
+    Location   : ../props/rr_props.sv, 547
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.065 s
+    Engine     : Hp
+
+
+[120]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_COV_SINGLE[1].cov_single_requester
+    Expression : u_dut.u_rr_props.GEN_COV_SINGLE[1].cov_single_requester
+    Type       : cover
+    Location   : ../props/rr_props.sv, 547
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.110 s
+    Engine     : Hp
+
+
+[121]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_COV_SINGLE[2].cov_single_requester
+    Expression : u_dut.u_rr_props.GEN_COV_SINGLE[2].cov_single_requester
+    Type       : cover
+    Location   : ../props/rr_props.sv, 547
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.117 s
+    Engine     : Hp
+
+
+[122]
+    Name       : rr_fpv_top.u_dut.u_rr_props.GEN_COV_SINGLE[3].cov_single_requester
+    Expression : u_dut.u_rr_props.GEN_COV_SINGLE[3].cov_single_requester
+    Type       : cover
+    Location   : ../props/rr_props.sv, 547
+
+    Result     : covered
+    Bound      : 1
+    Time       : 0.103 s
+    Engine     : Hp
+
+
+[123]
+    Name       : rr_fpv_top.u_dut.u_rr_props.cov_srst_clears_grant
+    Expression : u_dut.u_rr_props.cov_srst_clears_grant
+    Type       : cover
+    Location   : ../props/rr_props.sv, 554
+
+    Result     : covered
+    Bound      : 3
+    Time       : 0.210 s
+    Engine     : Hp
+
+
+[124]
+    Name       : rr_fpv_top.u_dut.u_rr_props.cov_en_gates_grant
+    Expression : u_dut.u_rr_props.cov_en_gates_grant
+    Type       : cover
+    Location   : ../props/rr_props.sv, 560
+
+    Result     : covered
+    Bound      : 5
+    Time       : 0.244 s
+    Engine     : Hp
+
+
+[125]
+    Name       : rr_fpv_top.u_dut.u_rr_props.cov_full_rotation
+    Expression : u_dut.u_rr_props.cov_full_rotation
+    Type       : cover
+    Location   : ../props/rr_props.sv, 565
+
+    Result     : covered
+    Bound      : 4
+    Time       : 0.235 s
+    Engine     : Hp
+
+
+[126]
+    Name       : rr_fpv_top.u_dut.u_rr_props.cov_p_active_switches
+    Expression : u_dut.u_rr_props.cov_p_active_switches
+    Type       : cover
+    Location   : ../props/rr_props.sv, 573
+
+    Result     : covered
+    Bound      : 3
+    Time       : 0.216 s
+    Engine     : Hp
+
+
+-------------------------------------------------------------------------------

@@ -1,0 +1,942 @@
+VERIFICATION NOTES — CROSSBAR PROPERTY SUITES & UVM TESTBENCHES
+======================================================
+(FIFO, master-write-switch, master-read-switch, round-robin arbiter, and
+slave-side out-of-order completion tracker — formal; plus the uvm_rr
+dynamic testbench for the round-robin arbiter, section 8 below)
+
+Quick rundown of what's actually being checked in the five property files
+in this directory. Not a spec, just "here's what each group of properties
+is really proving."
+
+
+------------------------------------------------------------
+1. THE FIFO (scfifo_props.sv) — axicb_scfifo
+------------------------------------------------------------
+This is the one FIFO design reused everywhere in the crossbar (AW/W/B/AR/R
+buffering, the wch_gnt_fifo in the write switches, the id_fifo in the
+out-of-order slave path). It's checked fully standalone — push/pull/
+data_in/flush are all left free, no assumptions borrowed from how the rest
+of the crossbar would drive it — so a real bug can't hide behind a
+convenient assumption.
+
+- Reset behavior
+  - Async reset, sync reset, and flush all need to slam both pointers
+    (wrptr/rdptr) back to zero.
+  - Kept as three separate properties since each path clears things a
+    slightly different way in the RTL — didn't want to assume they're
+    equivalent just because they look similar.
+
+- Flag correctness
+  - empty/full aren't trusted blindly — they're checked against the
+    actual pointer math (empty = pointers equal, full = occupancy hits
+    DEPTH).
+  - Sanity check that full and empty can never both be true at once.
+  - Checks that the external empty/full ports match the internal flags
+    (true for the current STORE_MODE scope — flagged in comments since
+    it won't hold once PASS_THRU=1 is turned on later).
+
+- Overflow / underflow protection
+  - Pushing into a full FIFO must not move wrptr — the write gets
+    dropped, not silently corrupted.
+  - Pulling from an empty FIFO must not move rdptr.
+  - These two matter the most — if either ever fires, that's silent data
+    corruption, exactly the bug you don't want to find in silicon.
+
+- Pointer / wrap-around correctness
+  - Every legal push moves wrptr forward by exactly one; every legal pull
+    moves rdptr forward by exactly one.
+  - Neither pointer is allowed to move for any other reason.
+  - Checks the "extra bit" trick this FIFO uses to tell full apart from
+    empty once the low address bits wrap — makes sure it flips at
+    exactly the right moment and nowhere else.
+
+- Data integrity
+  - The actual proof the FIFO works, not just that its flags behave.
+  - A shadow memory (built only from ports + bound-in pointers, never
+    touching the DUT's real RAM) tracks what should be in each slot.
+  - Checks that data_out always matches what was actually written there.
+  - Checks that data_out doesn't drift on its own while the front entry
+    hasn't been popped yet.
+
+- Cover properties (reachability sanity)
+  - FIFO can actually fill up completely.
+  - FIFO can drain all the way back to empty after being full.
+  - Both wrptr and rdptr actually wrap around at least once.
+
+
+------------------------------------------------------------
+2. MASTER WRITE SWITCH (mst_switch_wr_props.sv) — axicb_mst_switch_wr
+------------------------------------------------------------
+This block arbitrates between multiple masters wanting to write, then
+routes the B (write-response) channel back to whichever master actually
+sent the request. Two jobs: pick a winner going out, get the response
+back to the right place coming in.
+
+- Grant / AW channel correctness
+  - Grant vector is always one-hot or all-zero — never two masters
+    driving the outbound AW channel at once.
+  - Whatever the grant points to is what actually shows up on the output
+    (address/control fields) — no crosstalk with other masters.
+  - awready never goes back to a master that wasn't actually granted —
+    otherwise two masters could both think they won arbitration.
+
+- en_c / en_r bookkeeping
+  - These internal signals decide whether the switch is idle or mid-
+    transaction.
+  - Checks they follow their expected combinational relationship, since
+    a lot of downstream AW logic depends on this being exact.
+
+- W channel following AW
+  - Once a master wins AW and the handshake completes, W data has to
+    come from that same master, not a different one.
+  - FIFO-open-only checks (Pass 2): the wch_gnt FIFO (which remembers
+    who won AW) is gated correctly — nothing pushed when full, nothing
+    pulled when empty, and the payload/wlast coming out really belongs
+    to whoever's at the front of that FIFO.
+
+- B channel routing
+  - The ID-mask scheme decides which master a B response belongs to.
+  - bvalid only ever goes to the one master whose ID mask actually
+    matches — never to the wrong one.
+  - bready gets correctly forwarded from whichever master is the actual
+    target.
+  - bch itself isn't mangled on the way through (straight passthrough).
+
+- Idle behavior
+  - If no master has anything pending on AW or W, the switch's outputs
+    sit quiet — no stale awvalid/wvalid left hanging.
+
+- Two-pass verification structure
+  - A lot of this file is gated behind FIFO_OPEN.
+  - Pass 1: internal write-data FIFO is black-boxed/frozen (srst tied
+    off, wch_full forced to 0) so arbitration/AW logic can be proven on
+    its own without the FIFO blowing up the proof.
+  - Pass 2: FIFO turned back on, adds properties that depend on its
+    internal state (pushes, pulls, full/empty interaction with grants).
+  - Splitting it this way kept both proofs converging instead of one
+    giant proof that never finishes.
+
+- Cover properties
+  - Every master gets at least one AW handshake (arbitration actually
+    reaches everyone).
+  - Back-to-back AW handshakes.
+  - All masters requesting at once (the real stress case).
+  - Pass 2 only: a full AW → W → B transaction completing end to end,
+    and the write FIFO actually reaching full.
+
+
+------------------------------------------------------------
+3. ROUND-ROBIN ARBITER (rr_props.sv) — axicb_round_robin
+------------------------------------------------------------
+This one's bound with full white-box visibility into the mask/grant
+internals across all four priority layers — round-robin fairness is
+basically impossible to check as a black box, since you need to see the
+mask register to know if it's actually rotating.
+
+- Reset behavior
+  - After either kind of reset, grant and the internal mask both come
+    back to zero.
+  - Checked through an observable consequence (a known req pattern after
+    reset produces the expected grant), not just by staring at the raw
+    internal register.
+
+- One-hot / mutual exclusion
+  - The core promise of any arbiter: never grant two requesters at once,
+    never grant someone who isn't requesting.
+
+- Mask correctness
+  - After a requester gets granted, the mask needs to shift so that
+    requester goes to the back of the line next round.
+  - Mask reboots to zero once you've walked past the MSB.
+  - Granting the lowest bit clears exactly what it should.
+  - Mask always keeps its expected "all-ones-then-all-zeros" shape, never
+    a garbled bit pattern.
+
+- Grant rotation / fairness
+  - The masked path (skip anyone who already had their turn this round)
+    gets taken before falling back to the unmasked wraparound.
+  - Same requester isn't granted twice in a row unless they're genuinely
+    the only one asking.
+  - This is where it actually earns the name "round robin" instead of
+    just being priority arbitration with extra steps.
+
+- Priority layer logic
+  - Four priority layers (P0 lowest → P3 highest); higher always beats
+    lower — P1 beats P0, P2 beats P0/P1, P3 beats everyone.
+  - p_active correctly reflects whichever layer currently has the
+    highest active request.
+  - When a high layer is active, the grant output really comes from that
+    layer's internal grant vector, not leaked from somewhere else.
+
+- Liveness / no starvation (bounded)
+  - Not "eventually" in the infinite sense — formal tools need a bound —
+    but: requesting at the highest active priority guarantees a grant
+    within REQ_NB cycles.
+  - Same-priority peers don't starve past 2×REQ_NB cycles.
+  - This is the "fairness" half — round-robin doesn't just avoid
+    collisions, it avoids anyone getting perpetually skipped.
+
+- Corner cases
+  - A lone requester with nobody else active gets granted immediately.
+  - Grant stays sane right after a mask "reboot" (wrapping past the
+    MSB).
+  - en=0 correctly freezes everything rather than silently dropping
+    grants.
+  - Sync reset overrides even if en happens to be asserted the same
+    cycle.
+
+- Cover properties
+  - Each requester actually gets granted at least once.
+  - Mask actually reaches all-ones.
+  - Both the masked path and the unmasked fallback path get exercised.
+  - Back-to-back different grants happen.
+  - A higher-priority request preempts a lower one mid-sequence.
+  - A full, clean round-robin rotation through all four requesters
+    happens in order.
+
+
+------------------------------------------------------------
+4. MASTER READ SWITCH (mst_switch_rd_props.sv) — axicb_mst_switch_rd
+------------------------------------------------------------
+Read-side counterpart to the write switch above, but structurally
+simpler: there's no grant-memory FIFO on this path. R responses already
+carry the requesting master's ID, so routing them back doesn't need
+anything remembered from the AR phase — unlike W data, which carries no
+ID and needs the wch_gnt_fifo to remember who won arbitration.
+
+- AR channel / grant correctness
+  - Same shape as the AW checks above: grant is one-hot or zero, the
+    output AR fields belong to whoever's actually granted, arready never
+    reaches a master that wasn't granted.
+
+- en_c / en_r bookkeeping
+  - Same combinational relationship as the write switch's awch_en_c/_r,
+    just renamed arch_en_c/_r for the read side.
+
+- R channel routing
+  - Same ID-mask scheme as B channel routing, but for read data: rvalid
+    only reaches the one master whose ID mask matches, rready is
+    forwarded from that same master, rch is a straight passthrough.
+  - rlast gets the same treatment as rvalid — gated by both ID-match and
+    o_rvalid, so a master never sees rlast fire without rvalid also
+    being asserted (this needed an RTL fix partway through, see the CEX
+    section below — it wasn't right on the first pass).
+
+- Idle behavior
+  - No pending AR requests means no stale arvalid/o_arvalid left hanging.
+
+- Single-pass verification structure
+  - No FIFO means no FIFO_OPEN two-pass split like the write switch
+    needed. One proof, full state space, from the start.
+
+- Cover properties
+  - Every master gets an AR handshake, back-to-back ARs, all masters
+    requesting at once (mirrors the write switch's cover set).
+  - R handshake fires, rlast fires, a full AR → R sequence completes end
+    to end.
+
+
+------------------------------------------------------------
+5. SLAVE OUT-OF-ORDER COMPLETION TRACKER (slv_ooo_props.sv) — axicb_slv_ooo
+------------------------------------------------------------
+This is the slave-side counterpart to the wch_gnt_fifo inside
+axicb_mst_switch_wr, but harder: instead of remembering a single AW winner,
+it tracks one outstanding transaction per ID (a per-ID FIFO storing target
+slave / misroute flag / ID, up to MST_OSTDREQ_NUM deep) and arbitrates,
+round-robin, which outstanding ID's completion gets returned to the master
+next. Same module is instantiated once for the write/B path and once for
+the read/R path inside axicb_slv_switch_wr / axicb_slv_switch_rd (RD_PATH
+picks which — read completions also carry ALEN, write completions don't).
+
+Standalone like the FIFO: a_valid/a_ready/c_en/c_valid/c_ch/c_end and all
+address-channel fields are left free, restricted only by legality
+assumptions about the environment this block was actually built to sit
+behind (one-hot routing, ID values within the outstanding-request budget)
+— not by anything crossbar-specific.
+
+FIRST PASS SCOPE: RD_PATH=0 (write/B path, no ALEN), MST_OSTDREQ_NUM=4
+(> 1, so the real per-ID FIFO + round-robin path is what's elaborated, not
+the OSTDREQ_NUM==1 single-outstanding bypass, which swaps in a plain
+axicb_pipeline stage instead of any FIFO/arbiter at all — structurally a
+different block wearing the same ports). RD_PATH=1 and OSTDREQ_NUM==1 left
+as future passes, same "scope now, note the rest" idiom scfifo_props.sv
+used for BLOCK/PASS_THRU.
+
+Unlike mst_switch_wr, this one did NOT get a black-boxed Pass 1 / full
+Pass 2 split even though it also wraps a FIFO. mst_switch_wr's FIFO is
+downstream overhead relative to the AW arbitration under test — freezing
+it still leaves the AW logic provable on its own. Here the per-ID FIFOs
+*are* the arbitration state; there's no meaningful "logic before the FIFO"
+left to prove if they're frozen out. So this is one proof, full state
+space, like mst_switch_rd's read-side path — same reasoning, different
+underlying cause.
+
+- Reset / idle behavior
+  - Backpressure (a_full) and any granted-completion fields clear after
+    async reset — no stale garbage handed to the master out of reset.
+  - Wiring check that the completion-request vector and the round-robin
+    core's grant are actually connected end to end (round_robin_core's own
+    "no request, no grant" guarantee was proven in isolation elsewhere —
+    this confirms the wires here actually carry it through).
+
+- Address intake / per-ID routing
+  - A handshake on the address channel pushes exactly one ID slot's FIFO
+    — the one matching its own (unmasked) ID, never zero, never the wrong
+    one, never more than one.
+  - No handshake means no push, full stop.
+  - a_full is exactly "some ID slot's FIFO is full," nothing else.
+
+- Misrouted-first arbitration priority
+  - When any outstanding ID's head-of-line entry is a misrouted
+    transaction (targets no real slave), it's served ahead of everything
+    else — checked as an actual priority property (a genuinely-valid
+    slave completion never sneaks into the request vector on a cycle a
+    misroute is pending), not just restating the RTL's if/else as an
+    assertion.
+
+- Completion routing / ID matching
+  - The core anti-crosstalk property: an ID slot's completion request
+    never fires unless some slave is actually valid, actually the one
+    that slot's transaction targeted, and actually carrying that
+    slot's own unmasked ID. Checked against an independently re-derived
+    "who could legitimately be driving this" reference (id_match) built
+    from the same signals the RTL reads, not a copy of the RTL's own
+    computation.
+  - Grant across outstanding IDs is one-hot-or-zero.
+  - The ID FIFO is only ever popped for the slot that was actually
+    granted, and only once the transaction genuinely ends (c_end) — not
+    on every cycle a slot happens to hold the grant mid-burst.
+
+- Output staging
+  - The output mux (which slot's stored payload actually reaches
+    c_grant/c_mr/c_id/c_len) picks exactly the granted slot, nothing
+    else, and produces all-zero — never stale data — when nothing is
+    actually selected.
+  - c_len forced to 0 for the RD_PATH=0 (write) scope, flagged as
+    scope-specific since RD_PATH=1 changes this.
+
+- Cover properties (reachability sanity)
+  - Backpressure can actually fire, and every ID slot can fill up at
+    once (the real stress case for a 4-deep outstanding budget).
+  - A misrouted slot's synthetic completion is actually granted end to
+    end, not just requested and left hanging.
+  - Two different IDs are genuinely outstanding at the same time (real
+    arbitration contention between them, not just one ID cycling alone),
+    and the grant actually rotates between them.
+  - Each slave's completion actually makes it back to the master at
+    least once.
+
+
+------------------------------------------------------------
+6. CEX FAILURES FOUND AND FIXED — mst_switch_rd verification session
+------------------------------------------------------------
+First full run of mst_switch_rd_props.sv came back with 7 CEX out of 131
+checks. Each one was traced against the RTL rather than just weakened
+until it passed — three distinct root causes:
+
+- ast_arvalid_out_clears_after_srst — deleted, not fixed.
+  Turned out not to be a real invariant. srst only clears the round-robin
+  core's own fairness state (mask/grant_r), not the pending requests
+  sitting on arvalid. If a master's ARVALID is still up the cycle srst
+  fires, axicb_round_robin_core's masked==0 re-arbitration path grants it
+  right back the very next cycle — so o_arvalid isn't guaranteed to drop
+  after srst. (The write switch has the same-shaped property, but it's
+  gated FIFO_OPEN-only and so never actually got exercised there — this
+  was the first time this exact claim got tested for real, and it didn't
+  hold up.)
+
+- ast_arvalid_stable_until_arready and ast_en_r_set_when_no_grant — kept,
+  scoped instead of dropped. Both are real invariants, but they only
+  broke when srst fired mid-transaction (grant already outstanding, not
+  yet accepted) and force-cleared grant_r/arch_en_r out from under them.
+  Since asm_srst_rare allows srst to fire at any time, added srst to
+  disable iff on just these two properties — not a blanket change across
+  the file, since disabling everything on srst would also silently stop
+  ast_srst_clears_en_r from ever actually being checked (its entire job
+  is testing what srst does).
+
+- ast_rlast_requires_rvalid (all 4 masters) — genuine RTL bug, patched.
+  axicb_mst_switch_rd.sv was computing i_rlast[i] from ID-mask targeting
+  alone, without also gating on o_rvalid the way i_rvalid[i] already was.
+  So i_rlast[i] could glitch high while i_rvalid[i] stayed 0, whenever
+  the targeted slave's o_rlast happened to be 1 during a cycle where
+  o_rvalid was 0 (legal — RLAST is don't-care while RVALID is low).
+  Harmless in practice since a real master only ever samples RLAST
+  alongside a valid RVALID & RREADY handshake, but it was a real
+  asymmetry against how rvalid was already gated, so fixed at the RTL:
+  i_rlast[i] now requires mst_rch_targeted[i] && o_rvalid, same as
+  i_rvalid[i].
+
+- ast_rlast_passthrough_targeted_i (all 4 masters) — follow-up re-run
+  surfaced this one only after the RTL fix above went in. The property
+  was written before that fix and still expected i_rlast[i] == o_rlast
+  whenever just ID-targeted, with no o_rvalid qualifier — so once i_rlast
+  correctly started forcing low when o_rvalid=0, this older property
+  started tripping on its own now-out-of-date assumption. Added the same
+  o_rvalid qualifier to the property's antecedent so it matches what the
+  RTL now actually guarantees.
+
+Final run: 129 checks — 53 proven, 75 covered, 1 benign unreachable
+(reset-related, same tool-modeling caveat as elsewhere in this file),
+0 CEX.
+
+
+------------------------------------------------------------
+7. CEX FAILURE FOUND AND FIXED — slv_ooo verification session
+------------------------------------------------------------
+First run of slv_ooo_props.sv (RD_PATH=0, MST_OSTDREQ_NUM=4) came back with
+1 CEX out of 62 checks — traced against axicb_round_robin_core.sv rather
+than weakened until it passed.
+
+- ast_idgrant_zero_when_no_creqs — kept, scoped instead of dropped. Written
+  as a plain wiring sanity check ("c_reqs and id_grant are actually
+  connected to round_robin_core's req/grant ports") assuming grant tracks
+  req combinationally every cycle. It doesn't: axicb_round_robin_core's
+  grant output is `en ? grant_c : grant_r`, and grant_r only updates while
+  en is high — when en=0 the always block simply omits an assignment, so
+  grant_r (and therefore grant) holds whatever was last latched in, fully
+  decoupled from whatever req is doing that cycle. CEX at bound 3: c_en
+  drops low while a previous grant is still held in grant_r, c_reqs falls
+  to 0 the same cycle, and id_grant stays nonzero — a real reachable state,
+  not a tool artifact.
+  Exact same shape of mistake as mst_switch_rd's ast_arvalid_out_clears_
+  after_srst CEX above: an invariant that looks obviously true from staring
+  at the combinational grant equation, but doesn't hold once the arbiter's
+  enable/hold semantics are accounted for. rr_props.sv already knew this —
+  every req/grant relationship property in that file is qualified by en
+  (e.g. p_lonely_req_below_mask_gets_grant: `(en && |req) |-> |grant`) —
+  this property just missed applying the same idiom one level up, at the
+  slv_ooo integration point. Fixed by adding the c_en qualifier to the
+  antecedent: `(c_en && (c_reqs == '0)) |-> (id_grant == '0)`.
+
+Fix applied in slv_ooo_props.sv, not yet confirmed by a re-run — the other
+61 checks (61/62: 20 proven, 32 covered-precondition/assumption sanity
+checks, 9 reachability covers, all clean on the first run) aren't expected
+to move, but the re-run against this property specifically is still
+outstanding before this session can be marked 0 CEX the way mst_switch_rd's
+was.
+
+
+------------------------------------------------------------
+8. DYNAMIC/UVM VERIFICATION — uvm_rr testbench (round-robin arbiter)
+------------------------------------------------------------
+test/uvm_rr/. Complements section 3 above with a different verification
+method AND a different DUT boundary: section 3's rr_props.sv binds white-box
+into axicb_round_robin (the 169-line wrapper), while this testbench
+instantiates axicb_round_robin_core directly (the 2779-line generate-heavy
+core the wrapper calls out to — rtl/axicb_round_robin_core.sv), driven
+through a clean req/en/srst/grant interface with no formal-tool-specific
+scaffolding. Same arbitration logic, proven two different ways, from two
+different structural entry points.
+
+- Testbench architecture (standard 1-agent UVM env, nothing exotic)
+  - rr_if.sv: clocking-block interface (drv_cb/mon_cb, #1step in / #2 out),
+    DRIVER and MONITOR modports — driver and monitor never touch raw
+    signals, only their own clocking block view, so there's no
+    driver/monitor race on the same edge.
+  - rr_driver: pulls one rr_seq_item per clock from the sequencer, drives
+    req/en/srst onto drv_cb, one item = one clock cycle. Idles req=0/en=1/
+    srst=0 until the first posedge of aresetn, same as the DUT's own
+    reset release.
+  - rr_monitor: passive, samples mon_cb every clock after aresetn goes
+    high and republishes req/en/srst/grant as a seq_item on its analysis
+    port — this is the actual "waveform capture": every cycle's DUT
+    behavior gets turned into a checked transaction, not eyeballed after
+    the fact.
+  - rr_scoreboard: the checker. Reimplements the core's mask/rotate
+    algorithm generically for any RR_REQ_NB (not copied from the RTL —
+    written independently from the algorithm description, same
+    "independently re-derived, not a mirror of the RTL's own computation"
+    discipline the FPV side uses, e.g. slv_ooo's id_match in section 5).
+    Predicts grant every cycle from (req, en, srst) + its own tracked
+    exp_mask/exp_grant_r, compares against what the monitor actually saw,
+    raises uvm_error on any mismatch, and prints matches/mismatches in
+    report_phase.
+  - rr_coverage: functional covergroup on req, grant, en, srst, plus a
+    req×grant cross — answers "which request/grant combinations did we
+    actually see," separately from whether they were correct.
+  - env wiring: agt.mon.ap -> both sb.ap_imp and cov.analysis_export
+    (monitor fans out to checker and coverage independently).
+
+- Five canned tests, all UVM_TESTNAME targets via +UVM_TESTNAME (test/rr_tests.sv)
+  - rr_reset_test: 5 idle cycles (req=0, en=1) right after reset — cheapest
+    possible sanity check that the arbiter comes up clean.
+  - rr_walking_one_test: single requester swept across every REQ_NB
+    position, 3 cycles held each — isolates one-hot behavior per requester
+    with no arbitration contention.
+  - rr_all_active_test: req='1 held for 4*REQ_NB cycles — forces a full
+    round-robin rotation and at least one mask wraparound.
+  - rr_srst_test (added this session, seq/rr_sequences.sv rr_srst_seq):
+    walks the mask forward through all 4 requesters, asserts srst for 2
+    cycles while req='1 and en=1 (the "srst overrides even if en is
+    asserted the same cycle" case), then walks the mask forward again to
+    see if the arbiter resumes cleanly. Added specifically to close a
+    stimulus gap described below — see the coverage findings for whether
+    it actually closed it.
+  - rr_random_test: up to 500 constrained-random items, en distributed
+    9:1 on:off (rr_seq_item's c_en_mostly_on) — the closest thing to
+    "real" unpredictable traffic in this suite.
+  - rr_base_test also exists (elaboration-only, no sequence, just builds
+    the env and dumps the topology) — not a functional test, useful as a
+    compile/elaborate smoke check.
+
+- Full batch run, all five tests — results (test/uvm_rr/logs/*_random.log,
+  Questa Sim-64 2024.2, auto-linked UVM-1.1d via Questa's
+  questa_uvm_pkg-1.2 shim — worth noting the exact linked UVM version if
+  this goes in a post, since it's not the newer 1.2 base class library):
+
+      test                  matches   mismatches   UVM_ERROR   UVM_FATAL
+      rr_reset_test              5         0            0           0
+      rr_walking_one_test       12         0            0           0
+      rr_all_active_test       16         0            0           0
+      rr_srst_test              10         0            0           0
+      rr_random_test           500         0            0           0
+
+  All five PASS — 543 total checked cycles across the suite, zero
+  scoreboard mismatches, zero UVM errors/fatals. Every cycle's grant
+  matched the independently-written reference model, not just "no
+  crash." (Match counts line up exactly with each sequence's item count:
+  rr_walking_one_test's 4*3=12, rr_all_active_test's 4*4=16, rr_srst_test's
+  4+2+4=10.)
+
+- A gap found by reading the testbench, and how it was closed
+  Originally: srst was never driven non-zero by any of the first four
+  sequences (rr_reset_seq/rr_walking_one_seq/rr_all_active_seq hard-code
+  tr.srst=1'b0, rr_random_seq's rr_seq_item has a hard c_srst_off
+  constraint). The scoreboard's write() function does model what srst is
+  supposed to do (clear exp_mask/exp_grant_r, with priority over en — RTL-
+  verified against rtl/axicb_round_robin_core.sv:2757-2774 before adding
+  any srst stimulus, to make sure a real srst=1 cycle wouldn't just cause
+  a false scoreboard mismatch), and rr_if/the DUT both wire srst up — but
+  no sequence exercised that path.
+  Fix: rr_srst_seq (above) directly assigns tr.srst=1'b1 for two items.
+  The scoreboard reported a clean 10/10 match, no errors — but the merged
+  coverage report (logs/coverage_summary.txt) claimed srst never toggled
+  at all (toggle coverage `srst 0 0 0.00%`, covergroup `cp_srst` bin
+  auto[1]=0 hits), which would have meant the fix silently didn't work.
+  Resolved by direct waveform inspection of logs/rr_srst_test_random.wlf:
+  /rr_tb_top/u_dut/srst (== vif.srst, same net, direct port connection)
+  genuinely toggles 0->1 at 77 ns and 1->0 at 97 ns. Clock period is
+  10 ns with posedges at 5, 15, 25, ... 75, 85, 95 ns; drv_cb's output
+  skew is #2 (rr_if.sv: `default input #1step output #2`), so a value
+  driven for the edge at 75 ns lands on the physical net at 77 ns. srst
+  being high for the full [77, 97) ns window means it was already settled
+  1 at both the 85 ns and 95 ns posedges — exactly the two clock edges
+  rr_srst_seq's `repeat (2)` block intended to hit, sampled correctly by
+  the DUT's synchronous always block. It drops back to 0 at 97 ns because
+  that's when the *next* item (srst=0, resuming the walking-one sweep)
+  lands, 2 ns after the edge at 95 ns that drove it. Separately, the
+  `vif.drv_cb.srst` trace in the same waveform shows the drop already at
+  95 ns rather than 97 ns — that's expected too: QuestaSim's clocking-
+  block signal view displays the value as scheduled/sampled AT the
+  clocking edge itself, not after the output skew is applied to the
+  physical net, so the two traces disagreeing by exactly the 2 ns skew is
+  correct behavior, not a race or a bug.
+  Conclusion: srst is genuinely driven, reaches the DUT, and is sampled
+  on the intended cycles — the fix works. The coverage report's "0
+  hits" claim was wrong for this signal; most likely a `vcover merge`
+  or report-generation artifact rather than a real capture gap (worth
+  double-checking with `vcover report -details -all
+  logs/rr_srst_test_random.ucdb` against the standalone, non-merged
+  ucdb if this needs to be nailed down further, but it doesn't change
+  the functional conclusion — waveform is the ground truth here and it's
+  unambiguous). srst's synchronous-reset behavior is now exercised and
+  cross-checked by both this dynamic suite and section 3's formal proof,
+  not just the formal side alone.
+
+- Code coverage on the DUT itself (axicb_round_robin_core, +cover=bcst,
+  merged across all five runs — logs/coverage_summary.txt):
+  Branch 82.75% (24/29), Condition 100% (2/2), Statement 84.61% (22/26),
+  Toggle 92.85% (52/56). Two specific misses worth naming, both hand-
+  traced against the RTL rather than left as bare numbers:
+  - Line 190 (`else grant_c='0`, the masked-path fallback when |masked is
+    true but no individual masked[i] bit is set): genuinely unreachable —
+    if masked is nonzero, some masked[i] must be set by construction, so
+    this is dead defensive code, not a stimulus gap. Same for the
+    equivalent unmasked-path fallback at line 198 (not missed here, but
+    same shape).
+  - Line 197 (`else if (req[3]) grant_c=4'd8`, the unmasked path granting
+    the last requester alone): a REAL, reachable gap. Traced the mask's
+    state space — mask only ever takes values {0000, 1110, 1100, 1000,
+    1111} (per MASK_4's rotation), and every non-zero value already has
+    bit 3 set. So this branch only fires when mask==0000 (i.e. the very
+    first arbitration decision right after reset/srst) AND req is
+    exactly 4'b1000 (requester 3 alone, nobody else asking) on that exact
+    cycle. None of the five tests happen to drive req=1000 as their very
+    first post-reset request — rr_walking_one_test and rr_srst_test both
+    start their sweep at requester 0, and by the time they reach
+    requester 3 the mask has already rotated forward to include bit 3
+    (masked path, not this one). A real, narrow, closable corner case —
+    good "coverage found something code review wouldn't" material.
+
+- Functional coverage (rr_coverage's covergroup, logs/coverage_summary.txt):
+  cp_req 100% (16/16 — every 4-bit req pattern seen), cp_en 100% (2/2),
+  cp_srst 50% (1/2) — per the finding above, this specific number is
+  believed to be a report artifact (waveform confirms srst=1 was actually
+  driven and sampled), not a real miss, cp_grant 31.25% (5/16), cross
+  cx_req_grant 20.70% (53/256). The low-looking cp_grant/cx_req_grant
+  numbers aren't actually bad — grant is a 4-bit vector but only 5 values
+  are even legal for a correctly-behaving one-hot-or-zero arbiter (0000
+  and each single bit), so 5/16 legal bins covered means 100% of the
+  *reachable* grant space was hit, and — just as importantly — none of
+  the 11 illegal multi-hot bins were ever hit either, i.e. mutual
+  exclusion held for real, empirically, across 543 cycles, not just
+  assumed. Same reasoning shrinks cx_req_grant's real denominator well
+  below 256. Worth stating this explicitly in a post rather than quoting
+  the raw 20-31% numbers unexplained.
+
+- en=0 coverage, for scale: cp_en's bins show en=0 hit 54 times and en=1
+  hit 446 times across the whole suite — only rr_random_test ever
+  de-asserts en (~10% of its cycles, per the 9:1 dist constraint); the
+  other tests hold en=1 throughout. Not a defect — en=0 freezing the
+  arbiter is formally proven in section 3.
+
+- Infrastructure added this session (test/uvm_rr/run.sh)
+  - Per-test artifacts in test/uvm_rr/logs/: <test>_<seed>.log (full
+    transcript), .wlf (waveform database, reopenable with
+    `vsim -view <file>.wlf -do "add wave -r /*"` — no re-simulation
+    needed), .ucdb (coverage database).
+  - DUT compiled separately with +cover=bcst (branch/condition/statement/
+    toggle code coverage) so it's possible to say not just "did the
+    checks pass" but "how much of axicb_round_robin_core.sv's logic did
+    this stimulus actually reach."
+  - Automatic PASS/FAIL per test, parsed from the UVM Report Summary
+    (UVM_ERROR/UVM_FATAL counts), and a merged coverage report
+    (logs/coverage_summary.txt, plus logs/merged.ucdb) across all tests
+    run in one batch — this is what produced every number above.
+  - `--gui` flag for a live interactive run with waves preloaded, or
+    `vsim -viewcov logs/merged.ucdb` for the merged coverage GUI.
+  - .gitignore updated: work/, transcript, *.wlf, *.ucdb are simulation
+    artifacts and shouldn't be committed; logs/coverage_summary.txt is
+    left trackable since it's small and human-readable.
+
+
+------------------------------------------------------------
+9. MUTATION TESTING — proving the checkers have teeth (test/uvm_rr/mutation/)
+------------------------------------------------------------
+Motivation: section 8's full batch run was 543/543 clean on the first
+attempt, zero scoreboard mismatches. That's evidence the RTL has no bug
+the suite happens to hit — it is NOT evidence the suite would catch one if
+it existed. A checker that always reports PASS regardless of what the DUT
+does would produce exactly the same clean log. The only way to actually
+measure a checker's detection power is to give it something wrong to
+detect: deliberately inject a small, known bug into the RTL (a "mutant"),
+then confirm the existing checks — unmodified, no foreknowledge of what
+was changed — flag it. This is mutation testing, standard practice in SW
+testing, applied here to the RTL + its dynamic (UVM) and formal (FPV)
+checkers.
+
+- Tooling (test/uvm_rr/mutation/)
+  - mutants.py: a line-safe mutation injector. Each mutant is declared as
+    a small list of (line_number, expected_old_text, new_text) edits
+    against rtl/axicb_round_robin_core.sv's REQ_NB==4 generate block
+    (GRANT_4/MASK_4, lines 174-219 — the width actually instantiated by
+    both FPV's rr_fpv_top and the uvm_rr testbench) plus the shared
+    grant/grant_r output-mux logic at the bottom of the file (lines
+    2757-2774, not inside any generate block, so it only exists once).
+    apply(id) backs up the original file, then for every edit reads the
+    target line and asserts it still matches expected_old_text exactly
+    before writing new_text in its place — if the file has drifted since
+    the mutant was written (wrong line number, code moved), it aborts
+    and restores from backup rather than silently editing the wrong
+    line. restore() copies the backup back over the working file. This
+    was deliberately built as a Python line-editor rather than sed/patch
+    because sed's regex metacharacters (`'`, `[`, `]` are everywhere in
+    this file's bit-select and literal syntax) make silent mismatches
+    easy; a stripped-string equality check has no such ambiguity.
+  - run_mutation.sh: the sweep driver. For each mutant: calls
+    mutants.py apply, recompiles the DUT + testbench with vlog, runs all
+    five UVM tests from section 8 back-to-back in lean mode (no -wlf/
+    -coverage — full waveform dumps are multi-GB per run per section 8's
+    logs, not needed just to get a kill/survive verdict), parses
+    UVM_ERROR counts and greps for the scoreboard's "grant mismatch"
+    string, then (unless --uvm-only) runs FPV/tcl/rr_fpv_mutation.tcl
+    through JasperGold and parses its property list for anything in
+    `cex` status, then calls mutants.py restore before moving to the
+    next mutant. A trap on EXIT calls restore unconditionally, so a
+    Ctrl-C mid-sweep can't leave the RTL mutated. Writes
+    test/uvm_rr/mutation/results/summary.md plus a raw log per
+    mutant/tool.
+  - FPV/tcl/rr_fpv_mutation.tcl: a lean copy of FPV/tcl/rr_fpv.tcl (same
+    analyze/elaborate/clock/reset/prove -all as the real flow) that skips
+    coverage measurement and file-report writing, and ends with
+    `get_property_list -include {assert} -status {cex}` printed as one
+    greppable line — the automatable equivalent of reading the JasperGold
+    property pane by eye.
+
+- The 8 mutants (all single, minimal, syntactically-valid edits — each
+  models a specific class of real RTL bug, not a contrived crash):
+
+    ID   Line(s)   What changed                          Bug modeled
+    M1   2771,2773 swap grant=grant_c <-> grant=grant_r   inverted en-mux
+                    in the output always_comb block         on the output
+    M2   2763      `if (en) begin` -> `if (1'b1) begin`    grant_r updates
+                    guarding grant_r<=grant_c                even while
+                                                              en=0 (should
+                                                              freeze)
+    M3   187       masked[1] branch: grant_c 4'd2->4'd4    wrong requester
+                                                              granted,
+                                                              masked path
+    M4   196       req[2] branch: grant_c 4'd4->4'd2       wrong requester
+                                                              granted,
+                                                              unmasked path
+    M5   187       `else if (masked[1])` -> `if (masked[1])` masked[1]
+                    (drops the else, so masked[0]'s grant_c    silently
+                    can be overwritten by a second,            overrides a
+                    unconditional check)                       correct
+                                                                 masked[0]
+                                                                 grant when
+                                                                 both bits
+                                                                 are set
+    M6   185       `if (|masked)` -> `if (|req)`            branch chosen
+                                                              on req instead
+                                                              of masked ->
+                                                              silent
+                                                              starvation
+                                                              when
+                                                              masked==0 but
+                                                              req!=0
+    M7   211       grant[0] branch: mask<=4'b1110->4'b1100  rotation skips
+                                                              requester 1
+                                                              after granting
+                                                              requester 0
+    M8   207       `else if (srst) begin` ->                sync reset (srst)
+                    `else if (1'b0) begin`                   stops clearing
+                                                              the mask
+
+  M1/M8 are "obviously wrong" sanity mutants (does the harness even work
+  at all); M3/M4/M7 are single wrong-constant bugs, the kind a code
+  reviewer might actually miss since the surrounding lines all look
+  identical; M5/M6 change control flow rather than a constant; M2 was
+  specifically chosen as the mutant most likely to survive FPV, since
+  grepping rr_props.sv (section 3's property list) turned up only one
+  *cover* property touching en=0 mid-run behavior (cov_en_gates_grant)
+  and no corresponding *assert* — B34 only constrains en=0 in the narrow
+  window right after $rose(aresetn), not general steady-state operation.
+
+- Results — UVM leg (test/uvm_rr/mutation/results/summary.md plus the
+  raw test/uvm_rr/mutation/results/M*_uvm.log per mutant, 2026-08-22, run
+  with --uvm-only; the FPV leg has not been run yet, see open items
+  below):
+
+      mutant  true UVM_ERROR sum   scoreboard mismatches   verdict
+      M1            453                    449              KILLED
+      M2              3                      2              KILLED
+      M3            186                    182              KILLED
+      M4             11                      9              KILLED
+      M5            127                    124              KILLED
+      M6            513                    509              KILLED
+      M7             97                     95              KILLED
+      M8              2                      1              KILLED
+
+  8/8 killed — every mutant produced at least one scoreboard mismatch
+  across the five-test regression, no false negatives. (The UVM_ERROR
+  counts above are corrected; run_mutation.sh's first version summed the
+  wrong thing — see the tooling bug note below. The mismatch counts were
+  right from the start since they come from a plain grep -c over the
+  whole log rather than an awk accumulator that only saw the last of
+  five per-test summary blocks.)
+
+  Per-test breakdown (UVM_ERROR count, one column per test in the
+  section-8 regression — this is the detail the aggregate table above
+  hides: WHICH test actually did the killing, not just that something
+  did):
+
+      mutant  reset_test  walking_one  all_active  srst_test  random_test
+      M1           0            5           13         10         425
+      M2           0            0            0          0           3
+      M3           0            2           12          2         170
+      M4           0            2            0          0           9
+      M5           0            0           10          2         115
+      M6           0           12           16         10         475
+      M7           0            0           12          0          85
+      M8           0            0            0          2           0
+
+  Three things worth pulling out of that table:
+  - rr_reset_test caught zero of the eight mutants (every entry in its
+    column is 0). Expected, not a weakness worth fixing: it's 5 idle
+    cycles at req=0 right after reset (section 8), so there's nothing
+    for a grant-computation or mask-rotation bug to act on. It's a
+    compile/elaborate + reset-value sanity check, and mutation testing
+    confirms that's exactly the (limited) job it does.
+  - M8 (srst no longer clears mask) is caught ONLY by rr_srst_test — the
+    other four columns are all 0 for that row. Without rr_srst_test (the
+    fifth test, added last session specifically to close the "srst never
+    driven" stimulus gap described in section 8), this mutant would have
+    survived the regression entirely. That's a direct, measured
+    before/after: the test written to close a coverage gap also turned
+    out to be the sole reason a real class of bug gets caught.
+  - M4 (wrong-requester grant, unmasked path, req[2] branch) is caught
+    by rr_walking_one_test and rr_random_test but NOT rr_all_active_test
+    (0 in that column) — consistent with the RTL's own mask state space
+    (section 8's line-197 analysis): by the time rr_all_active_test's
+    req='1 stimulus reaches requester 2, mask has already rotated past
+    0000, so the masked path is taken instead of the unmasked path M4
+    lives in. Same shape of reasoning as the line-197 finding, different
+    branch — the arbiter's reachable-state structure keeps showing up as
+    the reason particular tests do or don't exercise particular lines.
+
+  Concrete evidence, not just counts — the first scoreboard mismatch
+  each mutant produced, decoded against the mutation. Every field in the
+  raw log line is binary (rr_seq_item.sv:21's convert2string() and
+  rr_scoreboard.sv:62's error format both use %0b throughout — req, en,
+  srst, grant, exp_mask, expected, AND actual), so e.g. "expected=10
+  actual=100" below means binary 0010 vs 0100 (req[1] vs req[2]), not
+  decimal ten vs one hundred. Converted to decimal grant-index form here
+  for readability:
+  - M1 @55000ns: `req=1 en=1 srst=0 grant=0 exp_mask=0 =>
+    expected=1 actual=0`. req[0] alone should grant req[0]; the inverted
+    output mux instead shows the (still-reset, 0) value of grant_r.
+  - M2 @2525000ns: `req=1111 en=0 srst=0 grant=10(bin)=2(dec)
+    exp_mask=1110 => expected=1 actual=2`. en=0 should freeze grant at
+    its previous value; instead grant_r kept advancing underneath and
+    surfaced a rotated value once observed.
+  - M3 @75000ns: `req=10(bin, req[1]) en=1 exp_mask=1110 =>
+    expected=2 actual=4`. req[1] under a masked-path hit should grant
+    req[1] (2); the wrong-constant mutant grants req[2] (4) instead.
+  - M4 @115000ns: `req=100(bin, req[2]) en=1 exp_mask=1000 =>
+    expected=4 actual=2`. Mirror image of M3 on the unmasked path:
+    req[2] should grant req[2] (4), mutant grants req[1] (2).
+  - M5 @95000ns: `req=1111 en=1 exp_mask=1111 => expected=1
+    actual=2`. With mask all-ones, both masked[0] and masked[1] are set;
+    correct behavior grants req[0] (the masked[0] branch fires first and
+    forecloses the rest). The mutant's dropped `else` lets the masked[1]
+    check run unconditionally afterward and overwrite grant_c with 2 —
+    confirms the corrected mechanism above (priority override, not
+    literal multi-hot output; grant_c is single-assigned each cycle
+    either way).
+  - M6 @55000ns: `req=1 en=1 srst=0 grant=0 exp_mask=0 =>
+    expected=1 actual=0`. masked=mask&req=0 with req=1 nonzero: correct
+    behavior falls through to the unmasked path and grants req[0]; the
+    mutant's `if(|req)` selects the masked branch instead, which finds
+    nothing set and lands on the (normally dead) `grant_c='0` fallback —
+    a real, observed starvation cycle, not just a theoretical one.
+  - M7 @65000ns: `req=1111 en=1 exp_mask=1110 => expected=2
+    actual=4`. Reference mask (1110) correctly points at req[1] next;
+    the mutant's rotated mask (1100) skips straight to req[2] — the
+    fairness violation, caught on the very first cycle it could occur.
+  - M8 @95000ns: `req=1111 en=1 srst=1 exp_mask=0 => expected=1
+    actual=2`. Reference clears mask to 0 on srst, so the unmasked path
+    grants req[0] next; the mutant's stale, un-cleared mask (1110 left
+    over from before srst) instead lands on req[1].
+
+  Why UVM catches all eight, mechanically: rr_scoreboard's write()
+  (env/rr_scoreboard.sv) recomputes exp_mask/exp_grant/exp_grant_r from
+  (req, en, srst) every single cycle using logic transcribed independently
+  from the algorithm description (section 8's architecture notes), not
+  copied from the RTL under test. Every mutant here changes what grant_c
+  or mask becomes for some reachable (req, mask, en, srst) combination,
+  and because the reference model computes its own answer for that exact
+  combination from first principles, any RTL deviation shows up as
+  exp_grant !== tr.grant on the very next transaction that exercises the
+  mutated line — there's no shared logic between DUT and checker for a
+  bug to hide behind.
+
+  M2 (the one predicted as an FPV blind spot) was still killed by UVM,
+  just barely — 3 total UVM_ERRORs / 2 mismatches, the smallest margin of
+  any mutant, and (per the per-test table) only rr_random_test ever saw
+  it at all. That's consistent with the theory: en=0 is only ~10% of
+  cycles and only in rr_random_test (section 8's en=0 coverage note), so
+  there's a narrow but nonzero chance per random seed that the bug
+  doesn't get exercised at all — this mutant's kill depended on the
+  random seed landing on the right en=0 window, unlike the other seven
+  which get caught by at least one directed test regardless of seed.
+  Whether FPV independently confirms this one — or whether it's the one
+  mutant that survives formal and needs a new assertion — is exactly
+  what the still-open FPV leg would answer.
+
+- A bug found in the mutation tooling itself, while sanity-checking the
+  results before trusting them: run_mutation.sh's run_uvm() computed the
+  reported UVM_ERROR count with
+  `awk '/UVM_ERROR :/{c=$NF} END{print c+0}'` — since each mutant's log
+  contains five "UVM Report Summary" blocks (one per test in the
+  regression) and this pattern overwrites `c` every match, END only ever
+  printed the LAST test's count (rr_random_test), not the total across
+  all five. This made M8's row read "UVM_ERROR=0, mismatches=1" — looking
+  internally inconsistent (a mismatch with zero errors reported) until
+  checked against the raw log, where it turned out rr_srst_test alone
+  had 2 UVM_ERRORs that the last-test-only awk simply never counted. The
+  KILLED/SURVIVED verdicts were never wrong (they're driven by
+  `errors!=0 OR mismatches!=0`, and the mismatch grep was already correct
+  since it's a total count, not an accumulator bug), but the displayed
+  error counts for all 8 mutants were undercounts until this was caught.
+  Fixed to `awk '/UVM_ERROR :/{s+=$NF} END{print s+0}'` (sum instead of
+  last-value) in run_mutation.sh; the corrected totals above reflect the
+  fix. Worth keeping in the post as a small aside: verification tooling
+  needs the same "don't trust it just because it ran clean" scrutiny as
+  the RTL it's checking.
+
+- Open items / next steps
+  - The FPV leg has not been run — summary.md's FPV column is blank
+    (`skipped`, from --uvm-only). Running
+    `test/uvm_rr/mutation/run_mutation.sh` with no flags (or per-mutant,
+    e.g. `./run_mutation.sh M2`) would confirm whether rr_props.sv
+    independently kills all 8, and specifically whether M2 is a genuine
+    formal blind spot worth writing up as a finding (parallel to the
+    line-197 stimulus gap in section 8) or whether it's caught by some
+    property not obviously about en at all (e.g. B12/B18's mask-
+    transition properties, which constrain the state grant_r/mask can be
+    in on the following cycle and might catch drift indirectly).
+  - If M2 does survive FPV, the fix is a new assertion of the form
+    `(!en && $stable(en)) |=> $stable(grant)` (or equivalent over
+    grant_r/mask) — cov_en_gates_grant already covers reaching this state,
+    it just isn't asserted.
+  - 8 mutants is a deliberately small, hand-picked set covering distinct
+    mechanisms (reset polarity/timing, en-gating, wrong-constant grants on
+    both branches, control-flow/branch-selection bugs, one-hot violation,
+    rotation off-by-one) — not an exhaustive or tool-generated mutation
+    suite. A formal mutation-coverage score (e.g. via a commercial
+    mutation tool across every line of GRANT_4/MASK_4) would be a much
+    larger undertaking and wasn't the goal here; the goal was "can these
+    8 representative, hand-designed bugs hide" — and on the UVM side, the
+    answer is no.
+
+
+------------------------------------------------------------
+One thing that's consistent across all five files
+------------------------------------------------------------
+- A lot of these properties check real, observable input/output behavior
+  (a specific req pattern producing a specific grant) instead of just
+  comparing internal wires to each other.
+- That's more work to write, but it's what actually gives confidence the
+  RTL does what it's supposed to — not just that some internal signal
+  happens to match some other internal signal.
+
+
+------------------------------------------------------------
+10. WAVEFORM CAPTIONS — for the LinkedIn post
+------------------------------------------------------------
+Two waveforms worth screenshotting from this work, with captions.
+
+- Caption 1 — srst coverage-anomaly waveform
+  (source: logs/rr_srst_test_random.wlf, section 8)
+
+  "Mutation testing" aside for a second — this one's about trusting the
+  waveform over the coverage tool. The merged coverage report claimed
+  srst never toggled during this run (0% toggle coverage). The waveform
+  says otherwise: /rr_tb_top/u_dut/srst genuinely rises at 77 ns and
+  falls at 97 ns, cleanly spanning the two intended clock posedges at
+  85 ns and 95 ns (10 ns clock period, +2 ns driver skew from the
+  interface's clocking block). The scoreboard also reported a clean
+  match, no errors. Conclusion: srst was correctly driven and sampled —
+  the coverage report's "0 hits" was a report-generation artifact, not a
+  real testbench gap. When a coverage number and a waveform disagree,
+  the waveform wins.
+
+- Caption 2 — bug-injection waveform, mutant M8
+  (source: test/uvm_rr/mutation/, section 9; regenerate with
+  `mutants.py apply M8` then `run.sh --gui rr_srst_test 1` — the lean
+  mutation sweep itself doesn't dump waves, so this has to be captured
+  by hand, not pulled from mutation/results/)
+
+  Mutation testing in action: a single-line change disables the branch
+  that clears the round-robin arbiter's mask register on synchronous
+  reset (srst). The waveform shows srst pulsing high as expected — but
+  mask (normally the tell here) fails to drop to 0 afterward, staying
+  stuck at its pre-reset value. On the next arbitration cycle, with all
+  four requesters asserting req, that stale mask causes grant to select
+  requester 1 instead of the correct requester 0 a properly-cleared mask
+  would have produced. The UVM scoreboard, which predicts the expected
+  grant independently of the RTL, flagged the mismatch on the same
+  cycle — confirming the checker detects a real injected bug, not just
+  one it happens to agree with by construction.

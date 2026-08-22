@@ -1,0 +1,16 @@
+obj_dir
+*.log
+*.out
+*.vcd
+*.fst
+tags
+.DS_Store
+
+venv
+__pycache__
+
+# QuestaSim simulation artifacts (test/uvm_rr)
+work/
+transcript
+*.wlf
+*.ucdb

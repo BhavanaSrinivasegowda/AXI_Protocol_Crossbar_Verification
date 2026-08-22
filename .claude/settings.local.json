@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /home/sirim/project log --oneline -20)",
+      "Bash(verilator --lint-only -sv --timing ../../rtl/axicb_scfifo_ram.sv ../../rtl/axicb_scfifo_regfile.sv ../../rtl/axicb_scfifo.sv ../props/scfifo_props.sv ../bind/scfifo_bind.sv ../tb/scfifo_fpv_top.sv --top-module scfifo_fpv_top)",
+      "Bash(verilator --lint-only -sv --timing ../../rtl/axicb_round_robin_core.sv ../../rtl/axicb_round_robin.sv ../props/rr_props.sv ../bind1/rr_bind.sv ../tb/rr_fpv_top.sv --top-module rr_fpv_top)",
+      "Bash(verilator --lint-only -sv ../../rtl/axicb_scfifo_ram.sv ../../rtl/axicb_scfifo_regfile.sv ../../rtl/axicb_scfifo.sv ../tb/scfifo_fpv_top.sv --top-module scfifo_fpv_top)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(iverilog -g2012 -tnull ../../rtl/axicb_scfifo_ram.sv ../../rtl/axicb_scfifo_regfile.sv ../../rtl/axicb_scfifo.sv ../props/scfifo_props.sv ../bind/scfifo_bind.sv ../tb/scfifo_fpv_top.sv -s scfifo_fpv_top)",
+      "Bash(iverilog -g2012 -tnull ../../rtl/axicb_round_robin_core.sv ../../rtl/axicb_round_robin.sv ../props/rr_props.sv ../bind1/rr_bind.sv ../tb/rr_fpv_top.sv -s rr_fpv_top)",
+      "Bash(iverilog -g2012 -tnull ../../rtl/round_robin_core.sv)",
+      "Bash(verilator --lint-only -sv --timing -Wno-fatal ../../rtl/axicb_round_robin_core.sv ../../rtl/axicb_round_robin.sv ../../rtl/axicb_mst_switch_rd.sv ../props/mst_switch_rd_props.sv ../bind1/mst_switch_rd_bind.sv mst_switch_rd_fpv_top.sv --top-module mst_switch_rd_fpv_top)",
+      "Bash(verilator --lint-only -sv --timing -Wno-fatal ../../rtl/axicb_round_robin_core.sv ../../rtl/axicb_round_robin.sv ../../rtl/axicb_scfifo_ram.sv ../../rtl/axicb_scfifo_regfile.sv ../../rtl/axicb_scfifo.sv ../../rtl/axicb_mst_switch_wr.sv ../props/mst_switch_wr_props.sv ../bind1/mst_switch_wr_bind.sv mst_switch_wr_fpv_top.sv --top-module mst_switch_wr_fpv_top)",
+      "Bash(verilator --lint-only -sv --timing -Wno-fatal ../../rtl/axicb_round_robin_core.sv ../../rtl/axicb_round_robin.sv ../../rtl/axicb_mst_switch_rd.sv mst_switch_rd_fpv_top.sv --top-module mst_switch_rd_fpv_top)",
+      "Bash(verilator --lint-only -sv --timing -Wno-fatal -Wall ../../rtl/axicb_round_robin_core.sv ../../rtl/axicb_round_robin.sv ../../rtl/axicb_mst_switch_rd.sv ../bind1/mst_switch_rd_bind.sv mst_switch_rd_fpv_top.sv --top-module mst_switch_rd_fpv_top)",
+      "Bash(grep -rniE \"logfile|log_file|jaspergold| jg | jg$|proj_dir|-tcl \" /home/sirim/project --include=\"*.tcl\" --include=\"Makefile*\" --include=\"*.sh\" --include=\"*.md\" -l)",
+      "Bash(jg -help)",
+      "Bash(jg -version)",
+      "Bash(grep -n '\"\\\\-h\"\\\\|case \\\\$1\\\\|^ *[a-z_]*\\)$\\\\|echo \"  \\\\|USAGE\\\\|function ' /home/sirim/project/flow.sh)",
+      "Bash(command -v vsim)",
+      "Bash(chmod +x /home/sirim/project/test/uvm_rr/run.sh)",
+      "Bash(define)",
+      "Bash(grep -nE \"include|import|`define)",
+      "Bash(module)",
+      "Bash(deps\" /home/sirim/project/rtl/axicb_round_robin_core.sv | head -40; echo \"---LINES---\"; wc -l /home/sirim/project/rtl/axicb_round_robin_core.sv; echo \"---DEPS---\"; ls /home/sirim/project/deps 2>/dev/null; echo \"---ROOT---\"; ls /home/sirim/project)",
+      "Bash(bash --version)",
+      "Bash(vsim -version)",
+      "Bash(bash -n /home/sirim/project/test/uvm_rr/run.sh)",
+      "Bash(export HOME=/home/sirim)",
+      "Bash(git config *)",
+      "Bash(git -C /home/sirim/project status --porcelain test/uvm_rr)",
+      "Bash(echo \"exit:$?\")"
+    ]
+  }
+}

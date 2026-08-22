@@ -1,0 +1,57 @@
+
+==============================================================
+    Jasper Verification Results
+==============================================================
+    2022.12p002 64 bits for Linux64 3.10.0-1160.21.1.el7.x86_64
+    Host Name: mo.ece.pdx.edu
+    User Name: bhavanas
+    Printed on: Monday, Jul13, 2026 08:12:02 PM PDT
+    Working Directory: /u/bhavanas/AX_Crossbar_Verification/FPV/tcl
+
+
+==============================================================
+RESULTS
+==============================================================
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+       Name                                                                                |    Result    |  Engine  |  Bound  |  Time    
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+---[ <embedded> ]---------------------------------------------------------------------------------------------------------------------------
+[1]   scfifo_fpv_top.u_dut.u_scfifo_props.asm_data_in_not_x:precondition1                       covered         N             1    0.004 s      
+[2]   scfifo_fpv_top.u_dut.u_scfifo_props.ast_ptrs_zero_after_areset                            proven          PRE    Infinite    0.000 s      
+[3]   scfifo_fpv_top.u_dut.u_scfifo_props.ast_ptrs_zero_after_areset:precondition1              covered         PRE           1    0.000 s      
+[4]   scfifo_fpv_top.u_dut.u_scfifo_props.ast_ptrs_zero_after_srst                              proven          N      Infinite    0.001 s      
+[5]   scfifo_fpv_top.u_dut.u_scfifo_props.ast_ptrs_zero_after_srst:precondition1                covered         PRE           1    0.000 s      
+[6]   scfifo_fpv_top.u_dut.u_scfifo_props.ast_ptrs_zero_after_flush                             proven          N      Infinite    0.001 s      
+[7]   scfifo_fpv_top.u_dut.u_scfifo_props.ast_ptrs_zero_after_flush:precondition1               covered         PRE           1    0.000 s      
+[8]   scfifo_fpv_top.u_dut.u_scfifo_props.ast_empty_flag_matches_ptrs                           proven          PRE    Infinite    0.000 s      
+[9]   scfifo_fpv_top.u_dut.u_scfifo_props.ast_full_flag_matches_ptrs                            proven          PRE    Infinite    0.000 s      
+[10]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_port_empty_matches_internal                       proven          PRE    Infinite    0.000 s      
+[11]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_port_full_matches_internal                        proven          PRE    Infinite    0.000 s      
+[12]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_full_empty_mutually_exclusive                     proven          Hp     Infinite    0.006 s      
+[13]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_no_overflow                                       proven          N      Infinite    0.014 s      
+[14]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_no_overflow:precondition1                         covered         N             5    0.002 s      
+[15]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_no_underflow                                      proven          N      Infinite    0.001 s      
+[16]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_no_underflow:precondition1                        covered         Hp            1    0.008 s      
+[17]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_wrptr_increments_on_push                          proven          N      Infinite    0.001 s      
+[18]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_wrptr_increments_on_push:precondition1            covered         N             1    0.004 s      
+[19]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_wrptr_stable_unless_push                          proven          N      Infinite    0.001 s      
+[20]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_wrptr_stable_unless_push:precondition1            covered         Hp            1    0.015 s      
+[21]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_rdptr_increments_on_pull                          proven          N      Infinite    0.001 s      
+[22]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_rdptr_increments_on_pull:precondition1            covered         N             2    0.001 s      
+[23]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_rdptr_stable_unless_pull                          proven          Hp     Infinite    0.043 s      
+[24]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_rdptr_stable_unless_pull:precondition1            covered         N             1    0.004 s      
+[25]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_occupancy_never_exceeds_depth                     proven          Hp     Infinite    0.043 s      
+[26]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_wrptr_msb_wrap_toggle                             proven          Hp     Infinite    0.043 s      
+[27]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_wrptr_msb_wrap_toggle:precondition1               covered         N         2 - 4    0.002 s      
+[28]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_rdptr_msb_wrap_toggle                             proven          Hp     Infinite    0.044 s      
+[29]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_rdptr_msb_wrap_toggle:precondition1               covered         N             5    0.001 s      
+[30]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_data_integrity                                    proven          Hp     Infinite    0.211 s      
+[31]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_data_integrity:precondition1                      covered         N             2    0.002 s      
+[32]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_front_stable_until_popped                         cex             Hp            4    0.106 s      
+[33]  scfifo_fpv_top.u_dut.u_scfifo_props.ast_front_stable_until_popped:precondition1           covered         N         2 - 3    0.002 s      
+[34]  scfifo_fpv_top.u_dut.u_scfifo_props.cov_fifo_reaches_full                                 covered         N         2 - 5    0.002 s      
+[35]  scfifo_fpv_top.u_dut.u_scfifo_props.cov_empty_after_full                                  covered         Ht            9    0.041 s      
+[36]  scfifo_fpv_top.u_dut.u_scfifo_props.cov_wrptr_wraps                                       covered         N         2 - 5    0.002 s      
+[37]  scfifo_fpv_top.u_dut.u_scfifo_props.cov_rdptr_wraps                                       covered         Ht            6    0.006 s      

@@ -1,0 +1,189 @@
+
+==============================================================
+    Jasper Verification Results
+==============================================================
+    2022.12p002 64 bits for Linux64 3.10.0-1160.21.1.el7.x86_64
+    Host Name: mo.ece.pdx.edu
+    User Name: bhavanas
+    Printed on: Monday, Jun 8, 2026 10:36:40 PM PDT
+    Working Directory: /u/bhavanas/AX_Crossbar_Verification/FPV/tcl
+
+
+==============================================================
+RESULTS
+==============================================================
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+       Name                                                                                                                                     |    Result    |  Engine  |  Bound  |  Time    
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---[ <embedded> ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1]   mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWVALID_STABLE[0].asm_awvalid_stable_i:precondition1                                 covered         N             1    0.005 s      
+[2]   mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWVALID_STABLE[1].asm_awvalid_stable_i:precondition1                                 covered         Hp            1    0.101 s      
+[3]   mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWVALID_STABLE[2].asm_awvalid_stable_i:precondition1                                 covered         Hp            1    0.101 s      
+[4]   mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWVALID_STABLE[3].asm_awvalid_stable_i:precondition1                                 covered         Hp            1    0.101 s      
+[5]   mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WVALID_STABLE[0].asm_wvalid_stable_i:precondition1                                   covered         Hp            1    0.101 s      
+[6]   mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WVALID_STABLE[1].asm_wvalid_stable_i:precondition1                                   covered         Hp            1    0.101 s      
+[7]   mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WVALID_STABLE[2].asm_wvalid_stable_i:precondition1                                   covered         Hp            1    0.101 s      
+[8]   mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WVALID_STABLE[3].asm_wvalid_stable_i:precondition1                                   covered         Hp            1    0.101 s      
+[9]   mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_STABLE[0].asm_wlast_stable_i:precondition1                                     covered         Hp            1    0.101 s      
+[10]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_STABLE[1].asm_wlast_stable_i:precondition1                                     covered         Hp            1    0.101 s      
+[11]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_STABLE[2].asm_wlast_stable_i:precondition1                                     covered         Hp            1    0.101 s      
+[12]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_STABLE[3].asm_wlast_stable_i:precondition1                                     covered         Hp            1    0.101 s      
+[13]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWCH_STABLE[0].asm_awch_stable_i:precondition1                                       covered         N             1    0.005 s      
+[14]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWCH_STABLE[1].asm_awch_stable_i:precondition1                                       covered         Hp            1    0.101 s      
+[15]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWCH_STABLE[2].asm_awch_stable_i:precondition1                                       covered         Hp            1    0.101 s      
+[16]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWCH_STABLE[3].asm_awch_stable_i:precondition1                                       covered         Hp            1    0.101 s      
+[17]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WCH_STABLE[0].asm_wch_stable_i:precondition1                                         covered         Hp            1    0.101 s      
+[18]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WCH_STABLE[1].asm_wch_stable_i:precondition1                                         covered         Hp            1    0.101 s      
+[19]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WCH_STABLE[2].asm_wch_stable_i:precondition1                                         covered         Hp            1    0.101 s      
+[20]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WCH_STABLE[3].asm_wch_stable_i:precondition1                                         covered         Hp            1    0.101 s      
+[21]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.asm_bvalid_stable:precondition1                                                              covered         Hp            1    0.114 s      
+[22]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.asm_bch_stable:precondition1                                                                 covered         Hp            1    0.114 s      
+[23]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.asm_bch_id_in_range:precondition1                                                            covered         Hp            1    0.114 s      
+[24]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.asm_reset_at_start:precondition1                                                             covered         N             1    0.000 s      
+[25]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_REQ_WVALID[0].asm_wlast_requires_wvalid_i:precondition1                        covered         Hp            1    0.125 s      
+[26]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_REQ_WVALID[1].asm_wlast_requires_wvalid_i:precondition1                        covered         Hp            1    0.134 s      
+[27]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_REQ_WVALID[2].asm_wlast_requires_wvalid_i:precondition1                        covered         Hp            1    0.142 s      
+[28]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_REQ_WVALID[3].asm_wlast_requires_wvalid_i:precondition1                        covered         Hp            1    0.151 s      
+[29]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_grant_onehot_or_zero                                                                     proven          Hp     Infinite    0.237 s      
+[30]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_awvalid_out_implies_grant                                                                proven          Hp     Infinite    0.084 s      
+[31]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_awvalid_out_implies_grant:precondition1                                                  covered         Hp            1    0.160 s      
+[32]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWVALID_CORRECT[0].ast_awvalid_out_correct_master_i                                  proven          Hp     Infinite    0.237 s      
+[33]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWVALID_CORRECT[0].ast_awvalid_out_correct_master_i:precondition1                    covered         Hp            1    0.170 s      
+[34]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWVALID_CORRECT[1].ast_awvalid_out_correct_master_i                                  proven          Hp     Infinite    0.238 s      
+[35]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWVALID_CORRECT[1].ast_awvalid_out_correct_master_i:precondition1                    covered         Hp            1    0.179 s      
+[36]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWVALID_CORRECT[2].ast_awvalid_out_correct_master_i                                  proven          Hp     Infinite    0.238 s      
+[37]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWVALID_CORRECT[2].ast_awvalid_out_correct_master_i:precondition1                    covered         Hp            1    0.190 s      
+[38]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWVALID_CORRECT[3].ast_awvalid_out_correct_master_i                                  proven          Hp     Infinite    0.085 s      
+[39]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWVALID_CORRECT[3].ast_awvalid_out_correct_master_i:precondition1                    covered         Hp            1    0.160 s      
+[40]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWCH_CORRECT[0].ast_awch_out_correct_payload_i                                       proven          Hp     Infinite    0.238 s      
+[41]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWCH_CORRECT[0].ast_awch_out_correct_payload_i:precondition1                         covered         Hp            1    0.170 s      
+[42]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWCH_CORRECT[1].ast_awch_out_correct_payload_i                                       proven          Hp     Infinite    0.238 s      
+[43]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWCH_CORRECT[1].ast_awch_out_correct_payload_i:precondition1                         covered         Hp            1    0.179 s      
+[44]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWCH_CORRECT[2].ast_awch_out_correct_payload_i                                       proven          Hp     Infinite    0.239 s      
+[45]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWCH_CORRECT[2].ast_awch_out_correct_payload_i:precondition1                         covered         Hp            1    0.190 s      
+[46]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWCH_CORRECT[3].ast_awch_out_correct_payload_i                                       proven          Hp     Infinite    0.085 s      
+[47]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWCH_CORRECT[3].ast_awch_out_correct_payload_i:precondition1                         covered         Hp            1    0.160 s      
+[48]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWREADY_ONLY_GRANTED[0].ast_awready_only_to_granted_i                                proven          PRE    Infinite    0.000 s      
+[49]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWREADY_ONLY_GRANTED[0].ast_awready_only_to_granted_i:precondition1                  covered         Hp            1    0.170 s      
+[50]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWREADY_ONLY_GRANTED[1].ast_awready_only_to_granted_i                                proven          PRE    Infinite    0.000 s      
+[51]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWREADY_ONLY_GRANTED[1].ast_awready_only_to_granted_i:precondition1                  covered         Hp            1    0.179 s      
+[52]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWREADY_ONLY_GRANTED[2].ast_awready_only_to_granted_i                                proven          PRE    Infinite    0.000 s      
+[53]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWREADY_ONLY_GRANTED[2].ast_awready_only_to_granted_i:precondition1                  covered         Hp            1    0.190 s      
+[54]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWREADY_ONLY_GRANTED[3].ast_awready_only_to_granted_i                                proven          PRE    Infinite    0.000 s      
+[55]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_AWREADY_ONLY_GRANTED[3].ast_awready_only_to_granted_i:precondition1                  covered         Hp            1    0.160 s      
+[56]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_no_awvalid_out_without_master_req                                                        proven          Hp     Infinite    0.086 s      
+[57]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_no_awvalid_out_without_master_req:precondition1                                          covered         N             1    0.000 s      
+[58]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_awvalid_stable_until_awready                                                             proven          Hp     Infinite    0.239 s      
+[59]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_awvalid_stable_until_awready:precondition1                                               covered         Hp            2    0.242 s      
+[60]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_en_r_set_when_no_grant                                                                   proven          PRE    Infinite    0.000 s      
+[61]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_en_r_set_when_no_grant:precondition1                                                     covered         N             1    0.000 s      
+[62]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_en_r_clear_when_grant                                                                    proven          PRE    Infinite    0.000 s      
+[63]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_en_r_clear_when_grant:precondition1                                                      covered         Hp            1    0.160 s      
+[64]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_awch_en_c_correct                                                                        proven          PRE    Infinite    0.000 s      
+[65]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_awch_en_correct                                                                          proven          PRE    Infinite    0.000 s      
+[66]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_wvalid_out_zero_when_fifo_empty                                                          proven          PRE    Infinite    0.000 s      
+[67]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_wvalid_out_zero_when_fifo_empty:precondition1                                            covered         N             1    0.000 s      
+[68]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_wready_zero_when_fifo_empty                                                              proven          PRE    Infinite    0.000 s      
+[69]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_wready_zero_when_fifo_empty:precondition1                                                covered         N             1    0.000 s      
+[70]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_W_FOLLOWS_AW[0].ast_w_follows_aw_grant_i                                             proven          PRE    Infinite    0.000 s      
+[71]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_W_FOLLOWS_AW[0].ast_w_follows_aw_grant_i:precondition1                               covered         Hp            1    0.170 s      
+[72]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_W_FOLLOWS_AW[1].ast_w_follows_aw_grant_i                                             proven          PRE    Infinite    0.000 s      
+[73]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_W_FOLLOWS_AW[1].ast_w_follows_aw_grant_i:precondition1                               covered         Hp            1    0.179 s      
+[74]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_W_FOLLOWS_AW[2].ast_w_follows_aw_grant_i                                             proven          PRE    Infinite    0.000 s      
+[75]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_W_FOLLOWS_AW[2].ast_w_follows_aw_grant_i:precondition1                               covered         Hp            1    0.190 s      
+[76]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_W_FOLLOWS_AW[3].ast_w_follows_aw_grant_i                                             proven          PRE    Infinite    0.000 s      
+[77]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_W_FOLLOWS_AW[3].ast_w_follows_aw_grant_i:precondition1                               covered         Hp            1    0.160 s      
+[78]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_wch_grant_onehot_or_zero                                                                 proven          PRE    Infinite    0.000 s      
+[79]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_bvalid_onehot_or_zero                                                                    proven          Hp     Infinite    0.095 s      
+[80]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_REQUIRES_OBVALID[0].ast_bvalid_only_when_o_bvalid_i                           proven          PRE    Infinite    0.000 s      
+[81]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_REQUIRES_OBVALID[0].ast_bvalid_only_when_o_bvalid_i:precondition1             covered         Hp            1    0.202 s      
+[82]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_REQUIRES_OBVALID[1].ast_bvalid_only_when_o_bvalid_i                           proven          PRE    Infinite    0.000 s      
+[83]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_REQUIRES_OBVALID[1].ast_bvalid_only_when_o_bvalid_i:precondition1             covered         Hp            1    0.212 s      
+[84]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_REQUIRES_OBVALID[2].ast_bvalid_only_when_o_bvalid_i                           proven          PRE    Infinite    0.000 s      
+[85]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_REQUIRES_OBVALID[2].ast_bvalid_only_when_o_bvalid_i:precondition1             covered         Hp            1    0.221 s      
+[86]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_REQUIRES_OBVALID[3].ast_bvalid_only_when_o_bvalid_i                           proven          PRE    Infinite    0.000 s      
+[87]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_REQUIRES_OBVALID[3].ast_bvalid_only_when_o_bvalid_i:precondition1             covered         Hp            1    0.114 s      
+[88]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_CORRECT_MASTER[0].ast_bvalid_correct_master_by_mask_i                         proven          PRE    Infinite    0.000 s      
+[89]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_CORRECT_MASTER[0].ast_bvalid_correct_master_by_mask_i:precondition1           covered         Hp            1    0.202 s      
+[90]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_CORRECT_MASTER[1].ast_bvalid_correct_master_by_mask_i                         proven          PRE    Infinite    0.000 s      
+[91]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_CORRECT_MASTER[1].ast_bvalid_correct_master_by_mask_i:precondition1           covered         Hp            1    0.212 s      
+[92]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_CORRECT_MASTER[2].ast_bvalid_correct_master_by_mask_i                         proven          PRE    Infinite    0.000 s      
+[93]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_CORRECT_MASTER[2].ast_bvalid_correct_master_by_mask_i:precondition1           covered         Hp            1    0.221 s      
+[94]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_CORRECT_MASTER[3].ast_bvalid_correct_master_by_mask_i                         proven          PRE    Infinite    0.000 s      
+[95]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_CORRECT_MASTER[3].ast_bvalid_correct_master_by_mask_i:precondition1           covered         Hp            1    0.114 s      
+[96]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_NOT_WRONG[0].ast_bvalid_not_driven_wrong_master_i                             proven          PRE    Infinite    0.000 s      
+[97]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_NOT_WRONG[0].ast_bvalid_not_driven_wrong_master_i:precondition1               covered         Hp            1    0.114 s      
+[98]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_NOT_WRONG[1].ast_bvalid_not_driven_wrong_master_i                             proven          PRE    Infinite    0.000 s      
+[99]  mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_NOT_WRONG[1].ast_bvalid_not_driven_wrong_master_i:precondition1               covered         Hp            1    0.114 s      
+[100] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_NOT_WRONG[2].ast_bvalid_not_driven_wrong_master_i                             proven          PRE    Infinite    0.000 s      
+[101] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_NOT_WRONG[2].ast_bvalid_not_driven_wrong_master_i:precondition1               covered         Hp            1    0.114 s      
+[102] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_NOT_WRONG[3].ast_bvalid_not_driven_wrong_master_i                             proven          PRE    Infinite    0.000 s      
+[103] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BVALID_NOT_WRONG[3].ast_bvalid_not_driven_wrong_master_i:precondition1               covered         Hp            1    0.202 s      
+[104] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BREADY_FOLLOWS[0].ast_bready_follows_targeted_master_i                               proven          Hp     Infinite    0.096 s      
+[105] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BREADY_FOLLOWS[0].ast_bready_follows_targeted_master_i:precondition1                 covered         Hp            1    0.202 s      
+[106] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BREADY_FOLLOWS[1].ast_bready_follows_targeted_master_i                               proven          Hp     Infinite    0.096 s      
+[107] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BREADY_FOLLOWS[1].ast_bready_follows_targeted_master_i:precondition1                 covered         Hp            1    0.212 s      
+[108] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BREADY_FOLLOWS[2].ast_bready_follows_targeted_master_i                               proven          Hp     Infinite    0.097 s      
+[109] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BREADY_FOLLOWS[2].ast_bready_follows_targeted_master_i:precondition1                 covered         Hp            1    0.221 s      
+[110] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BREADY_FOLLOWS[3].ast_bready_follows_targeted_master_i                               proven          Hp     Infinite    0.097 s      
+[111] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_AST_BREADY_FOLLOWS[3].ast_bready_follows_targeted_master_i:precondition1                 covered         Hp            1    0.114 s      
+[112] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_bch_passthrough                                                                          proven          PRE    Infinite    0.000 s      
+[113] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_no_bvalid_when_no_id_match                                                               proven          Hp     Infinite    0.098 s      
+[114] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_no_bvalid_when_no_id_match:precondition1                                                 covered         Hp            1    0.230 s      
+[115] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_fifo_not_pulled_when_empty                                                               proven          PRE    Infinite    0.000 s      
+[116] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_fifo_not_pulled_when_empty:precondition1                                                 covered         N             1    0.000 s      
+[117] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_all_masters_idle_no_output                                                               proven          Hp     Infinite    0.098 s      
+[118] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.ast_all_masters_idle_no_output:precondition1                                                 covered         N             1    0.000 s      
+[119] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_COV_AW_HS[0].cov_aw_handshake_per_master_i                                               covered         Hp            1    0.170 s      
+[120] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_COV_AW_HS[1].cov_aw_handshake_per_master_i                                               covered         Hp            1    0.179 s      
+[121] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_COV_AW_HS[2].cov_aw_handshake_per_master_i                                               covered         Hp            1    0.190 s      
+[122] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_COV_AW_HS[3].cov_aw_handshake_per_master_i                                               covered         Hp            1    0.160 s      
+[123] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.cov_back_to_back_aw                                                                          covered         Hp            2    0.251 s      
+[124] mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.cov_concurrent_aw_requests                                                                   covered         Hp            1    0.101 s      
+
+==============================================================
+ASSUMPTIONS
+==============================================================
+
+-------------------------------------------------------------------------------
+       Name    |  Expression  |  Location     |  Status      |  Dependencies                  
+-------------------------------------------------------------------------------
+[1]   <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWVALID_STABLE[0].asm_awvalid_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_AWVALID_STABLE[0].asm_awvalid_stable_i  N/A approved
+[2]   <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWVALID_STABLE[1].asm_awvalid_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_AWVALID_STABLE[1].asm_awvalid_stable_i  N/A approved
+[3]   <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWVALID_STABLE[2].asm_awvalid_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_AWVALID_STABLE[2].asm_awvalid_stable_i  N/A approved
+[4]   <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWVALID_STABLE[3].asm_awvalid_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_AWVALID_STABLE[3].asm_awvalid_stable_i  N/A approved
+[5]   <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WVALID_STABLE[0].asm_wvalid_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WVALID_STABLE[0].asm_wvalid_stable_i  N/A approved
+[6]   <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WVALID_STABLE[1].asm_wvalid_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WVALID_STABLE[1].asm_wvalid_stable_i  N/A approved
+[7]   <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WVALID_STABLE[2].asm_wvalid_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WVALID_STABLE[2].asm_wvalid_stable_i  N/A approved
+[8]   <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WVALID_STABLE[3].asm_wvalid_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WVALID_STABLE[3].asm_wvalid_stable_i  N/A approved
+[9]   <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_STABLE[0].asm_wlast_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_STABLE[0].asm_wlast_stable_i  N/A approved
+[10]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_STABLE[1].asm_wlast_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_STABLE[1].asm_wlast_stable_i  N/A approved
+[11]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_STABLE[2].asm_wlast_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_STABLE[2].asm_wlast_stable_i  N/A approved
+[12]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_STABLE[3].asm_wlast_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_STABLE[3].asm_wlast_stable_i  N/A approved
+[13]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWCH_STABLE[0].asm_awch_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_AWCH_STABLE[0].asm_awch_stable_i  N/A approved
+[14]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWCH_STABLE[1].asm_awch_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_AWCH_STABLE[1].asm_awch_stable_i  N/A approved
+[15]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWCH_STABLE[2].asm_awch_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_AWCH_STABLE[2].asm_awch_stable_i  N/A approved
+[16]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_AWCH_STABLE[3].asm_awch_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_AWCH_STABLE[3].asm_awch_stable_i  N/A approved
+[17]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WCH_STABLE[0].asm_wch_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WCH_STABLE[0].asm_wch_stable_i  N/A approved
+[18]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WCH_STABLE[1].asm_wch_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WCH_STABLE[1].asm_wch_stable_i  N/A approved
+[19]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WCH_STABLE[2].asm_wch_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WCH_STABLE[2].asm_wch_stable_i  N/A approved
+[20]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WCH_STABLE[3].asm_wch_stable_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WCH_STABLE[3].asm_wch_stable_i  N/A approved
+[21]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.asm_bready_not_x  u_dut.u_mst_switch_wr_props.asm_bready_not_x  N/A approved
+[22]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.asm_awvalid_not_x  u_dut.u_mst_switch_wr_props.asm_awvalid_not_x  N/A approved
+[23]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.asm_wvalid_not_x  u_dut.u_mst_switch_wr_props.asm_wvalid_not_x  N/A approved
+[24]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.asm_awready_not_x  u_dut.u_mst_switch_wr_props.asm_awready_not_x  N/A approved
+[25]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.asm_wready_not_x  u_dut.u_mst_switch_wr_props.asm_wready_not_x  N/A approved
+[26]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.asm_bvalid_stable  u_dut.u_mst_switch_wr_props.asm_bvalid_stable  N/A approved
+[27]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.asm_bch_stable  u_dut.u_mst_switch_wr_props.asm_bch_stable  N/A approved
+[28]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.asm_bch_id_in_range  u_dut.u_mst_switch_wr_props.asm_bch_id_in_range  N/A approved
+[29]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.asm_reset_at_start  u_dut.u_mst_switch_wr_props.asm_reset_at_start  N/A approved
+[30]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_REQ_WVALID[0].asm_wlast_requires_wvalid_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_REQ_WVALID[0].asm_wlast_requires_wvalid_i  N/A approved
+[31]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_REQ_WVALID[1].asm_wlast_requires_wvalid_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_REQ_WVALID[1].asm_wlast_requires_wvalid_i  N/A approved
+[32]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_REQ_WVALID[2].asm_wlast_requires_wvalid_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_REQ_WVALID[2].asm_wlast_requires_wvalid_i  N/A approved
+[33]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_REQ_WVALID[3].asm_wlast_requires_wvalid_i  u_dut.u_mst_switch_wr_props.GEN_ASM_WLAST_REQ_WVALID[3].asm_wlast_requires_wvalid_i  N/A approved
+[34]  <embedded>::mst_switch_wr_fpv_top.u_dut.u_mst_switch_wr_props.GEN_A18_PASS1.asm_srst_inactive  u_dut.u_mst_switch_wr_props.GEN_A18_PASS1.asm_srst_inactive  N/A approved
+[35]  <embedded>::bbox_wch_full_zero  !u_dut.wch_full  N/A approved                           
+[36]  <embedded>::bbox_wch_empty_one  u_dut.wch_empty  N/A approved                           
+[37]  <embedded>::bbox_wch_grant_zero  u_dut.wch_grant == 4'b0  N/A approved                  

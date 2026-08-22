@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/sirim/project/**)",
+      "Read(//home/sirim/**)"
+    ]
+  }
+}

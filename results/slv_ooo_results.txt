@@ -1,0 +1,82 @@
+
+==============================================================
+    Jasper Verification Results
+==============================================================
+    2022.12p002 64 bits for Linux64 3.10.0-1160.21.1.el7.x86_64
+    Host Name: mo.ece.pdx.edu
+    User Name: bhavanas
+    Printed on: Thursday, Jul16, 2026 10:07:38 PM PDT
+    Working Directory: /u/bhavanas/AX_Crossbar_Verification/FPV/tcl
+
+
+==============================================================
+RESULTS
+==============================================================
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+       Name                                                                                                           |    Result    |  Engine  |  Bound  |  Time    
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---[ <embedded> ]------------------------------------------------------------------------------------------------------------------------------------------------------
+[1]   slv_ooo_fpv_top.u_dut.u_slv_ooo_props.asm_avalid_fields_known:precondition1                                          covered         N             1    0.064 s      
+[2]   slv_ooo_fpv_top.u_dut.u_slv_ooo_props.asm_avalid_stable:precondition1                                                covered         N             1    0.064 s      
+[3]   slv_ooo_fpv_top.u_dut.u_slv_ooo_props.asm_afields_stable:precondition1                                               covered         N             1    0.064 s      
+[4]   slv_ooo_fpv_top.u_dut.u_slv_ooo_props.asm_aix_legal_routing:precondition1                                            covered         N             1    0.064 s      
+[5]   slv_ooo_fpv_top.u_dut.u_slv_ooo_props.asm_aid_in_range:precondition1                                                 covered         N             1    0.064 s      
+[6]   slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_ASM_CVALID_ID_KNOWN[0].asm_cvalid_id_known_j:precondition1                 covered         N             1    0.002 s      
+[7]   slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_ASM_CVALID_ID_KNOWN[1].asm_cvalid_id_known_j:precondition1                 covered         N             1    0.004 s      
+[8]   slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_ASM_CVALID_ID_KNOWN[2].asm_cvalid_id_known_j:precondition1                 covered         N             1    0.003 s      
+[9]   slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_ASM_CVALID_ID_KNOWN[3].asm_cvalid_id_known_j:precondition1                 covered         Hp            1    0.116 s      
+[10]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_afull_zero_after_areset                                                    proven          PRE    Infinite    0.000 s      
+[11]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_afull_zero_after_areset:precondition1                                      covered         N             1    0.064 s      
+[12]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_completion_zero_after_areset                                               proven          PRE    Infinite    0.000 s      
+[13]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_completion_zero_after_areset:precondition1                                 covered         N             1    0.064 s      
+[14]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_idgrant_zero_when_no_creqs                                                 proven          Hp     Infinite    0.095 s      
+[15]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_idgrant_zero_when_no_creqs:precondition1                                   covered         Hp            1    0.116 s      
+[16]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_aidm_definition                                                            proven          PRE    Infinite    0.000 s      
+[17]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_afull_matches_idfull                                                       proven          PRE    Infinite    0.000 s      
+[18]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_PUSH_TARGET[0].ast_push_targets_correct_id_i                           proven          PRE    Infinite    0.000 s      
+[19]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_PUSH_TARGET[1].ast_push_targets_correct_id_i                           proven          PRE    Infinite    0.000 s      
+[20]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_PUSH_TARGET[2].ast_push_targets_correct_id_i                           proven          PRE    Infinite    0.000 s      
+[21]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_PUSH_TARGET[3].ast_push_targets_correct_id_i                           proven          PRE    Infinite    0.000 s      
+[22]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_no_push_without_ahandshake                                                 proven          Hp     Infinite    0.095 s      
+[23]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_no_push_without_ahandshake:precondition1                                   covered         N             1    0.064 s      
+[24]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_misrouted_priority                                                         proven          Hp     Infinite    0.096 s      
+[25]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_misrouted_priority:precondition1                                           covered         N             2    0.002 s      
+[26]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_creqs_zero_when_all_empty                                                  proven          Hp     Infinite    0.096 s      
+[27]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_creqs_zero_when_all_empty:precondition1                                    covered         N             1    0.064 s      
+[28]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CREQS_MATCH[0].ast_creqs_requires_real_match_i                         proven          Hp     Infinite    0.097 s      
+[29]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CREQS_MATCH[0].ast_creqs_requires_real_match_i:precondition1           covered         N             2    0.002 s      
+[30]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CREQS_MATCH[1].ast_creqs_requires_real_match_i                         proven          Hp     Infinite    0.097 s      
+[31]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CREQS_MATCH[1].ast_creqs_requires_real_match_i:precondition1           covered         N             2    0.002 s      
+[32]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CREQS_MATCH[2].ast_creqs_requires_real_match_i                         proven          Hp     Infinite    0.097 s      
+[33]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CREQS_MATCH[2].ast_creqs_requires_real_match_i:precondition1           covered         N             2    0.002 s      
+[34]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CREQS_MATCH[3].ast_creqs_requires_real_match_i                         proven          Hp     Infinite    0.105 s      
+[35]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CREQS_MATCH[3].ast_creqs_requires_real_match_i:precondition1           covered         Hp            2    0.161 s      
+[36]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_id_grant_onehot_or_zero                                                    proven          Hp     Infinite    0.158 s      
+[37]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_pull_matches_grant_on_cend                                                 proven          PRE    Infinite    0.000 s      
+[38]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_no_pull_without_grant                                                      proven          Hp     Infinite    0.106 s      
+[39]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_no_pull_without_grant:precondition1                                        covered         Hp            2    0.161 s      
+[40]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CSELECT[0].ast_cselect_matches_granted_id_i                            proven          Hp     Infinite    0.159 s      
+[41]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CSELECT[0].ast_cselect_matches_granted_id_i:precondition1              covered         Hp            2    0.171 s      
+[42]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CSELECT[1].ast_cselect_matches_granted_id_i                            proven          Hp     Infinite    0.159 s      
+[43]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CSELECT[1].ast_cselect_matches_granted_id_i:precondition1              covered         Hp            2    0.182 s      
+[44]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CSELECT[2].ast_cselect_matches_granted_id_i                            proven          Hp     Infinite    0.159 s      
+[45]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CSELECT[2].ast_cselect_matches_granted_id_i:precondition1              covered         Hp            2    0.191 s      
+[46]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CSELECT[3].ast_cselect_matches_granted_id_i                            proven          Hp     Infinite    0.107 s      
+[47]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_AST_CSELECT[3].ast_cselect_matches_granted_id_i:precondition1              covered         Hp            2    0.161 s      
+[48]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_completion_zero_when_empty                                                 proven          Hp     Infinite    0.107 s      
+[49]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_completion_zero_when_empty:precondition1                                   covered         N             3    0.002 s      
+[50]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_completion_len_zero_write_path                                             proven          PRE    Infinite    0.000 s      
+[51]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_completion_passthrough_when_valid                                          proven          PRE    Infinite    0.000 s      
+[52]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.ast_completion_passthrough_when_valid:precondition1                            covered         N             1    0.064 s      
+[53]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.cov_afull_reached                                                              covered         Ht            5    0.003 s      
+[54]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.cov_all_id_slots_full                                                          covered         Ht           17    4.891 s      
+[55]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.cov_misrouted_completion_granted                                               covered         Hp            2    0.171 s      
+[56]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.cov_two_ids_outstanding                                                        covered         Hp            3    0.241 s      
+[57]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.cov_back_to_back_ahandshakes                                                   covered         Hp            2    0.199 s      
+[58]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.cov_grant_rotates_between_ids                                                  covered         Hp            3    0.249 s      
+[59]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_COV_SLAVE_ROUTED[0].cov_completion_routed_per_slave_j                      covered         Hp            2    0.161 s      
+[60]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_COV_SLAVE_ROUTED[1].cov_completion_routed_per_slave_j                      covered         Hp            2    0.207 s      
+[61]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_COV_SLAVE_ROUTED[2].cov_completion_routed_per_slave_j                      covered         Hp            2    0.215 s      
+[62]  slv_ooo_fpv_top.u_dut.u_slv_ooo_props.GEN_COV_SLAVE_ROUTED[3].cov_completion_routed_per_slave_j                      covered         Hp            2    0.223 s      

@@ -1,0 +1,37 @@
+name: AXI-CROSSBAR
+on:
+  push:
+    paths:
+      - 'rtl/**'
+      - 'test/**'
+jobs:
+  Lint:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git submodule update --init --recursive
+      - run: ./flow.sh lint
+  Synthesis-AXI4:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git submodule update --init --recursive
+      - run: ./flow.sh syn axi4
+  Synthesis-AXI4-lite:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git submodule update --init --recursive
+      - run: ./flow.sh syn axi4lite
+  Simulation-AXI4:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git submodule update --init --recursive
+      - run: ./flow.sh sim axi4
+  Simulation-AXI4-lite:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git submodule update --init --recursive
+      - run: ./flow.sh sim axi4lite
